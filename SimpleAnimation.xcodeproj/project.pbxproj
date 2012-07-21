@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */; };
+		E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */ = {isa = PBXBuildFile; fileRef = E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */; };
+		E3DC962A15744B8500C3B308 /* SALetterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC962915744B8500C3B308 /* SALetterLabel.m */; };
+		E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9415739D5D00B09295 /* UIKit.framework */; };
+		E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9615739D5D00B09295 /* Foundation.framework */; };
+		E3F1CC9915739D5D00B09295 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */; };
+		E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */; };
+		E3F1CCA115739D5D00B09295 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA015739D5D00B09295 /* main.m */; };
+		E3F1CCA515739D5D00B09295 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA415739D5D00B09295 /* AppDelegate.m */; };
+		E3F1CCA815739D5D00B09295 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA715739D5D00B09295 /* FirstViewController.m */; };
+		E3F1CCAA15739D5D00B09295 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCA915739D5D00B09295 /* first.png */; };
+		E3F1CCAC15739D5D00B09295 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCAB15739D5D00B09295 /* first@2x.png */; };
+		E3F1CCAF15739D5D00B09295 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCAE15739D5D00B09295 /* SecondViewController.m */; };
+		E3F1CCB115739D5D00B09295 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB015739D5D00B09295 /* second.png */; };
+		E3F1CCB315739D5D00B09295 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB215739D5D00B09295 /* second@2x.png */; };
+		E3F1CCB615739D5D00B09295 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB415739D5D00B09295 /* FirstViewController.xib */; };
+		E3F1CCB915739D5D00B09295 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB715739D5D00B09295 /* SecondViewController.xib */; };
+		E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC01573A1A700B09295 /* GoldStar.png */; };
+		E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */; };
+		E3F1CCC51573BA3C00B09295 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
+		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
+		E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemAnimations.xib; sourceTree = "<group>"; };
+		E3887CF415BAA45700C6932C /* About this Project.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "About this Project.rtf"; sourceTree = "<group>"; };
+		E3DC962815744B8500C3B308 /* SALetterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SALetterLabel.h; sourceTree = "<group>"; };
+		E3DC962915744B8500C3B308 /* SALetterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SALetterLabel.m; sourceTree = "<group>"; };
+		E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F1CC9415739D5D00B09295 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E3F1CC9615739D5D00B09295 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E3F1CC9C15739D5D00B09295 /* SimpleAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleAnimation-Info.plist"; sourceTree = "<group>"; };
+		E3F1CC9E15739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E3F1CCA015739D5D00B09295 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E3F1CCA215739D5D00B09295 /* SimpleAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Prefix.pch"; sourceTree = "<group>"; };
+		E3F1CCA315739D5D00B09295 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E3F1CCA415739D5D00B09295 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E3F1CCA615739D5D00B09295 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		E3F1CCA715739D5D00B09295 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		E3F1CCA915739D5D00B09295 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		E3F1CCAB15739D5D00B09295 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		E3F1CCAD15739D5D00B09295 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		E3F1CCAE15739D5D00B09295 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		E3F1CCB015739D5D00B09295 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		E3F1CCB215739D5D00B09295 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		E3F1CCB515739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
+		E3F1CCB815739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		E3F1CCC01573A1A700B09295 /* GoldStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoldStar.png; sourceTree = "<group>"; };
+		E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GoldStarDocumentation.pdf; sourceTree = "<group>"; };
+		E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3F1CC8D15739D5C00B09295 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F1CCC51573BA3C00B09295 /* QuartzCore.framework in Frameworks */,
+				E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */,
+				E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */,
+				E3F1CC9915739D5D00B09295 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E3F1CC8515739D5C00B09295 = {
+			isa = PBXGroup;
+			children = (
+				E3887CF415BAA45700C6932C /* About this Project.rtf */,
+				E3F1CC9A15739D5D00B09295 /* SimpleAnimation */,
+				E3F1CC9315739D5D00B09295 /* Frameworks */,
+				E3F1CC9115739D5D00B09295 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3F1CC9115739D5D00B09295 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3F1CC9315739D5D00B09295 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */,
+				E3F1CC9415739D5D00B09295 /* UIKit.framework */,
+				E3F1CC9615739D5D00B09295 /* Foundation.framework */,
+				E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3F1CC9A15739D5D00B09295 /* SimpleAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				E3F1CCBF1573A1A700B09295 /* Graphics */,
+				E3F1CCA315739D5D00B09295 /* AppDelegate.h */,
+				E3F1CCA415739D5D00B09295 /* AppDelegate.m */,
+				E3F1CCA615739D5D00B09295 /* FirstViewController.h */,
+				E3F1CCA715739D5D00B09295 /* FirstViewController.m */,
+				E3F1CCB415739D5D00B09295 /* FirstViewController.xib */,
+				E3DC962815744B8500C3B308 /* SALetterLabel.h */,
+				E3DC962915744B8500C3B308 /* SALetterLabel.m */,
+				E3F1CCA915739D5D00B09295 /* first.png */,
+				E3F1CCAB15739D5D00B09295 /* first@2x.png */,
+				E3F1CCAD15739D5D00B09295 /* SecondViewController.h */,
+				E3F1CCAE15739D5D00B09295 /* SecondViewController.m */,
+				E3F1CCB715739D5D00B09295 /* SecondViewController.xib */,
+				E3F1CCB015739D5D00B09295 /* second.png */,
+				E3F1CCB215739D5D00B09295 /* second@2x.png */,
+				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
+				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
+				E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */,
+				E3F1CC9B15739D5D00B09295 /* Supporting Files */,
+			);
+			path = SimpleAnimation;
+			sourceTree = "<group>";
+		};
+		E3F1CC9B15739D5D00B09295 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3F1CC9C15739D5D00B09295 /* SimpleAnimation-Info.plist */,
+				E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */,
+				E3F1CCA015739D5D00B09295 /* main.m */,
+				E3F1CCA215739D5D00B09295 /* SimpleAnimation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3F1CCBF1573A1A700B09295 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				E3F1CCC01573A1A700B09295 /* GoldStar.png */,
+				E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E3F1CC8F15739D5C00B09295 /* SimpleAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3F1CCBC15739D5D00B09295 /* Build configuration list for PBXNativeTarget "SimpleAnimation" */;
+			buildPhases = (
+				E3F1CC8C15739D5C00B09295 /* Sources */,
+				E3F1CC8D15739D5C00B09295 /* Frameworks */,
+				E3F1CC8E15739D5C00B09295 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleAnimation;
+			productName = SimpleAnimation;
+			productReference = E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3F1CC8715739D5C00B09295 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = E3F1CC8A15739D5C00B09295 /* Build configuration list for PBXProject "SimpleAnimation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E3F1CC8515739D5C00B09295;
+			productRefGroup = E3F1CC9115739D5D00B09295 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E3F1CC8F15739D5C00B09295 /* SimpleAnimation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E3F1CC8E15739D5C00B09295 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */,
+				E3F1CCAA15739D5D00B09295 /* first.png in Resources */,
+				E3F1CCAC15739D5D00B09295 /* first@2x.png in Resources */,
+				E3F1CCB115739D5D00B09295 /* second.png in Resources */,
+				E3F1CCB315739D5D00B09295 /* second@2x.png in Resources */,
+				E3F1CCB615739D5D00B09295 /* FirstViewController.xib in Resources */,
+				E3F1CCB915739D5D00B09295 /* SecondViewController.xib in Resources */,
+				E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */,
+				E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */,
+				E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3F1CC8C15739D5C00B09295 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3F1CCA115739D5D00B09295 /* main.m in Sources */,
+				E3F1CCA515739D5D00B09295 /* AppDelegate.m in Sources */,
+				E3F1CCA815739D5D00B09295 /* FirstViewController.m in Sources */,
+				E3F1CCAF15739D5D00B09295 /* SecondViewController.m in Sources */,
+				E3DC962A15744B8500C3B308 /* SALetterLabel.m in Sources */,
+				E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3F1CC9E15739D5D00B09295 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E3F1CCB415739D5D00B09295 /* FirstViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3F1CCB515739D5D00B09295 /* en */,
+			);
+			name = FirstViewController.xib;
+			sourceTree = "<group>";
+		};
+		E3F1CCB715739D5D00B09295 /* SecondViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3F1CCB815739D5D00B09295 /* en */,
+			);
+			name = SecondViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E3F1CCBA15739D5D00B09295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		E3F1CCBB15739D5D00B09295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E3F1CCBD15739D5D00B09295 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleAnimation/SimpleAnimation-Prefix.pch";
+				INFOPLIST_FILE = "SimpleAnimation/SimpleAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E3F1CCBE15739D5D00B09295 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleAnimation/SimpleAnimation-Prefix.pch";
+				INFOPLIST_FILE = "SimpleAnimation/SimpleAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3F1CC8A15739D5C00B09295 /* Build configuration list for PBXProject "SimpleAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3F1CCBA15739D5D00B09295 /* Debug */,
+				E3F1CCBB15739D5D00B09295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3F1CCBC15739D5D00B09295 /* Build configuration list for PBXNativeTarget "SimpleAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3F1CCBD15739D5D00B09295 /* Debug */,
+				E3F1CCBE15739D5D00B09295 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3F1CC8715739D5C00B09295 /* Project object */;
+}
