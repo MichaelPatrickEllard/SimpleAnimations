@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *nonFadingStar;
 @property (strong, nonatomic) IBOutlet UIImageView *blinkStar;
+@property (strong, nonatomic) IBOutlet UIView *blinkHelperView;
 @property (strong, nonatomic) IBOutlet UIImageView *fadeStar;
 
 - (IBAction)doNotFadeTapped:(id)sender;

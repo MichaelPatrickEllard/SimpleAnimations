@@ -28,7 +28,12 @@
 @synthesize rotateColorWorkingView;
 @synthesize nonFadingStar;
 @synthesize blinkStar;
+@synthesize blinkHelperView;
 @synthesize fadeStar;
+
+#pragma mark Standard Viewcontroller Housekeeping methods
+
+// There's not much going on here in initWithNibName.  We do set the title and tab bar image so that this view controller's name and image will be shown in the tab bar.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,11 +45,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+// A standard viewDidUnload here.  All the code in this method was automatically created by Xcode when we dragged established connections between our .xib file and our .h file using the Connections Inspector in Interface Builder.  
 
 - (void)viewDidUnload
 {
@@ -62,6 +63,7 @@
     [self setJerkyStar:nil];
     [self setCorrectStar:nil];
     [self setNonFadingStar:nil];
+    [self setBlinkHelperView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -72,7 +74,14 @@
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
-// The following animation doesn't work.  The star doesn't fade out or even become hidden. 'hidden' is not an animatable property, so it's not unusual that it doesn't fade out, but it is surprising that it doesn't disappear at all.  It appears that UIView is overoptimizing this animation, and given that it is first becoming hidden and then becoming unhidden, the end state is the same as the beginning, and nothing happens.  This appears to be a bug in UIKit, which is present in the iOS Simulator and on device with iOS 5.1, but will hopefully be fixed in a future release.  
+#pragma mark - Star Fade examples
+
+//  The following animation doesn't work.  The star doesn't fade out or even become hidden.  It just kind of flickers for a second. 
+
+//  It appears that what's happening here is this:  'hidden' is not an animatable property, so shere is nothing animatable in this code.  Thus,  UIView applies the hidden property immediately.  UIView doesn't take a full second to do the initial animation, since there's nothing to animate for the requested duration.  Thus, it goes directly to the completion block, where there's also nothing to animate.  The result is that the star flickers out (i.e. is hidden) for a fraction of a second, and then is unhidden again.  
+
+//  The lesson to take away here is that not every UIView or CALayer property is animatable.  The documentation is usually pretty clear about which properties are animatable and which aren't - if you're not sure, check the documentation or do a quick using some test code.   
+
 
 - (IBAction)doNotFadeTapped:(id)sender 
 {   
@@ -89,11 +98,11 @@
      }];
 }
 
-//It just blinks out.  The reason is that UIView's hidden property is not an animatable property, so setting hidden to true causes the view to simply vanish, not fade out in an animated way.  
+//  In this example, the star doesn't fade.  It just blinks out.  This is better, but still not what we want.  
 
-//  The UIView documentation usually lists which properties are animatable and which are not.  
+//  Our code here is essentially the same as the code above, but I've added a change to an animatable property along with my request to set the star's property to hidden.  The change is a barely noticable color change to a tiny helper view, but this is enough so that the initial animation block and the completion block will take the full duration that I've requested to complete.  
 
-//  Note: this code a little more complicated than one might expect it to be, since if you set hidden to true in an animation block and then set it to false in a completion block or even an independent block that executes after a delay, UIView will detect that the end state is the same as the beginning state, and it won't bother to hide the star. 
+//  While the animated parts take a second to complete, hidden is not animatable and takes effect immediately.  
 
 
 - (IBAction)blinkTapped:(id)sender 
@@ -101,19 +110,21 @@
     [UIView animateWithDuration:1.0 animations:^
     {
         self.blinkStar.hidden = true;
-    }];
-    
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [UIView animateWithDuration:1.0 animations:^
-         {
-             self.blinkStar.hidden = false;
-         }];
-    });
+        self.blinkHelperView.backgroundColor = [UIColor darkGrayColor];
+        
+    }
+     completion:^(BOOL finished)
+     {
+         [UIView animateWithDuration:1.0 animations:^
+          {
+              self.blinkStar.hidden = false;
+              self.blinkHelperView.backgroundColor = [UIColor blackColor];
+          }];
+
+     }];
 }
 
-// This animation works.  The code is essentially the same as blinkTapped:, but in this case we're using the alpha property, so everything animates nicely.  Views with an alpha of 0 are just like views whose hidden value is true - they're not visible and they don't respond to touch events.  
+// This animation works.  The code is essentially the same as doNotFadeTapped:, but in this case we're using the alpha property, so everything animates nicely.  Views with an alpha of 0 are just like views whose hidden value is true - they're not visible and they don't respond to touch events.  
 
 - (IBAction)fadeTapped:(id)sender 
 {   
@@ -130,17 +141,19 @@
      }];
 }
 
-// The following animation won't work.  Since the same animatable property is being changed multiple times, all of the changes except the last change are ignored.  
+#pragma mark - Color Rotation
+
+// The following animation won't work.  UIView only animates one change to a particular property at a time - a new animation request for a property that is already being animated will cancel the existing animation and replace it with the new animation request.  Since the same animatable property is being changed multiple times in the code below, all of the changes except the last change are ignored.  
 
 - (IBAction)dontRotateColors:(id)sender 
 {
     [UIView animateWithDuration:3.0 animations:^
      {
-         self.rotateColorProblemView.backgroundColor = [UIColor whiteColor];
-         self.rotateColorProblemView.backgroundColor = [UIColor greenColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor blackColor];
          self.rotateColorProblemView.backgroundColor = [UIColor blueColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor greenColor];
          self.rotateColorProblemView.backgroundColor = [UIColor redColor];
-         self.rotateColorProblemView.backgroundColor = [UIColor whiteColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor blackColor];
      }];
 }
 
@@ -148,7 +161,7 @@
 
 - (IBAction)rotateColors:(id)sender 
 {
-    self.rotateColorWorkingView.backgroundColor = [UIColor whiteColor];
+    self.rotateColorWorkingView.backgroundColor = [UIColor blackColor];
     
     [UIView animateWithDuration:1.0 animations:^
      {
@@ -158,18 +171,27 @@
      {
          [UIView animateWithDuration:1.0 animations:^
           {
-              self.rotateColorWorkingView.backgroundColor = [UIColor redColor];
+              self.rotateColorWorkingView.backgroundColor = [UIColor greenColor];
           }
           completion:^(BOOL finished)
           {
               [UIView animateWithDuration:1.0 animations:^
                {
-                   self.rotateColorWorkingView.backgroundColor = [UIColor whiteColor];
-               }];
+                   self.rotateColorWorkingView.backgroundColor = [UIColor redColor];
+               }
+               completion:^(BOOL finished)
+               {
+                   [UIView animateWithDuration:1.0 animations:^
+                    {
+                        self.rotateColorWorkingView.backgroundColor = [UIColor blackColor];
+                    }];
+               }];          
           }];
      }];
 
 }
+
+#pragma mark - Flip Animations
 
 // We have animation in this one, but way too much.  The problem is that the transition occurs in the context of the superview of the view being transitioned away from.  Since the superview of the view being transitioned away from is UIViewController's main view, the whole screen flips.  
 
@@ -223,6 +245,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
      }];
 }
 
+#pragma mark - Spinning Animations
 
 -(void)spinStar:(UIImageView *)whichStar
   noOfRotations:(float)noOfRotations
@@ -242,15 +265,17 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
      }];
 }
 
-// This animation kind of works, but not the way we might want.  In this case, we're doing series of rations that take the star exactly 180° - 1/2 way around the circle.  UIView looks at the beginning state and end state, and optimizes how to get from the beginning state to the end state.  Oddly enough, in doing the initial rotate, it goes counter-clockwise.  However, if you rotate it again, it will go clockwise the next time.   
+// This animation kind of works, but not the way we might want.  In this case, we're doing series of rations that take the star exactly 180° - 1/2 way around the circle.  UIView looks at the beginning state and end state, and optimizes how to get from the beginning state to the end state.  Oddly enough, in doing the initial rotate, it goes counter-clockwise.  However, if you rotate it again, it will go clockwise the next time.
+
+//  Hypothesis: the "wrong way" rotation is caused by the fact that the math for one rotation ends up with a positive rotation, while the math for the other ends up with a negative rotation.  You're encouraged to play with this, investigate the math, and see if you can find a way to make the 1/2 rotations spins work correctly.  
 
 - (IBAction)wrongWayRotatePressed:(id)sender 
 {
     [UIView animateWithDuration:1.0
-                     animations:^
-     {
+                    animations:^
+    {
          [self spinStar:wrongWayStar noOfRotations:0.5];
-     }];
+    }];
 }
 
 // In this method, we're doing a series of 1/4 rotations.  This works, but the animation is jerky.  The reason that it's jerky is that the default for animations is "ease in / ease out", meaning that the animations will go slowly at the beginning and end of the animation, then more quickly in the middle.  In an animation that is really a series of animations chained together, this causes jerky updating.  
@@ -292,10 +317,6 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
          animationCounter == 8 ? animationCounter = 0 : [self correctRotatePressed:nil];
      }];
 }
-
-
-
-
 
 
 @end
