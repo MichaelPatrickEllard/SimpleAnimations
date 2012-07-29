@@ -11,11 +11,12 @@
 
 @interface SecondViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIImageView *starImage;
+@property (strong, nonatomic) IBOutlet UIImageView *starImage;
 
 -(IBAction)moveStarAnimated:(id)sender;
 -(IBAction)zoomStarAnimated:(id)sender;
 -(IBAction)spinStarAnimated:(id)sender;
+- (IBAction)fadeStarAnimated:(id)sender;
 
 
 @end

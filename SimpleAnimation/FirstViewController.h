@@ -13,7 +13,7 @@
 
 @interface FirstViewController : UIViewController 
 
-@property (weak, nonatomic) IBOutlet UILabel *startingA;
+@property (strong, nonatomic) IBOutlet UILabel *startingA;
 
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *letters;
 

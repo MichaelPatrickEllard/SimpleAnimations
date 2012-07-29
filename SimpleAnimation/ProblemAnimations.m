@@ -150,44 +150,52 @@
     [UIView animateWithDuration:3.0 animations:^
      {
          self.rotateColorProblemView.backgroundColor = [UIColor blackColor];
-         self.rotateColorProblemView.backgroundColor = [UIColor blueColor];
-         self.rotateColorProblemView.backgroundColor = [UIColor greenColor];
          self.rotateColorProblemView.backgroundColor = [UIColor redColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor orangeColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor yellowColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor greenColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor blueColor];
+         self.rotateColorProblemView.backgroundColor = [UIColor purpleColor];
          self.rotateColorProblemView.backgroundColor = [UIColor blackColor];
      }];
 }
 
-//  Here's a better way to rotate colors: Go through the desired colors one by one in separate animation blocks.  
+//  The following routine illustrates a better way to rotate colors: Go through the desired colors one by one in separate animation blocks.   
+
 
 - (IBAction)rotateColors:(id)sender 
 {
-    self.rotateColorWorkingView.backgroundColor = [UIColor blackColor];
+    static NSMutableArray *colorArray = nil;
+    
+    // If no array of colors exists, create one.  
+    
+    if (!colorArray)
+    {   colorArray = [NSMutableArray arrayWithObjects:[UIColor blackColor], [UIColor redColor], [UIColor orangeColor], [UIColor yellowColor], [UIColor greenColor], [UIColor blueColor], [UIColor purpleColor], [UIColor blackColor], nil];
+    }
     
     [UIView animateWithDuration:1.0 animations:^
      {
-         self.rotateColorWorkingView.backgroundColor = [UIColor blueColor];
+         self.rotateColorWorkingView.backgroundColor = [colorArray objectAtIndex:0];
      }
      completion:^(BOOL finished)
      {
-         [UIView animateWithDuration:1.0 animations:^
-          {
-              self.rotateColorWorkingView.backgroundColor = [UIColor greenColor];
-          }
-          completion:^(BOOL finished)
-          {
-              [UIView animateWithDuration:1.0 animations:^
-               {
-                   self.rotateColorWorkingView.backgroundColor = [UIColor redColor];
-               }
-               completion:^(BOOL finished)
-               {
-                   [UIView animateWithDuration:1.0 animations:^
-                    {
-                        self.rotateColorWorkingView.backgroundColor = [UIColor blackColor];
-                    }];
-               }];          
-          }];
-     }];
+         //  Remove the color that we just showed from the color array.
+         
+         [colorArray removeObjectAtIndex:0];
+         
+         //  This is a recursive method.  It will keep calling itself until all of the colors have been shown and the colorArray is empty.
+         
+         if ([colorArray count])
+         {
+             [self rotateColors:nil];
+         }
+         else 
+         {
+             //  Once all of the colors have been shown, set the colorArray to nil so that the next time the method is called it will start fresh and create a new color array with all of the colors to be shown.
+             
+             colorArray = nil;
+         }
+    }];
 
 }
 

@@ -19,7 +19,7 @@
 		E3F1CCA815739D5D00B09295 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA715739D5D00B09295 /* FirstViewController.m */; };
 		E3F1CCAA15739D5D00B09295 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCA915739D5D00B09295 /* first.png */; };
 		E3F1CCAC15739D5D00B09295 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCAB15739D5D00B09295 /* first@2x.png */; };
-		E3F1CCAF15739D5D00B09295 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCAE15739D5D00B09295 /* SecondViewController.m */; };
+		E3F1CCAF15739D5D00B09295 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCAE15739D5D00B09295 /* SecondViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E3F1CCB115739D5D00B09295 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB015739D5D00B09295 /* second.png */; };
 		E3F1CCB315739D5D00B09295 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB215739D5D00B09295 /* second@2x.png */; };
 		E3F1CCB615739D5D00B09295 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB415739D5D00B09295 /* FirstViewController.xib */; };
@@ -280,7 +280,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -299,7 +299,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;

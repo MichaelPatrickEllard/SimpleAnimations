@@ -35,7 +35,9 @@ static float speedSetting = 1.0;
 {
     [super viewDidLoad];
 	
-    // Let's set up the layer's shadow options.  This will help us twinkle when it's time.
+    //  Let's set up the layer's shadow options.  This will help us twinkle when it's time.
+    
+    //  Note: As you can see from the code below, shadows don't have to be gray.  They can be any color you'd like.  
     
     self.starImage.layer.shadowOffset = CGSizeMake(0,0);
     self.starImage.layer.shadowColor = [[UIColor orangeColor] CGColor];
@@ -53,7 +55,7 @@ static float speedSetting = 1.0;
 
 #pragma mark Move Star
 
-// Like most of the routines here, this is broken up into two parts:  a routine that does the actual view manipulation, and a second routines that includes the changes to the view in an animation block.  In this case, moveStar does the work of moving the star, moveStarAnimated: calls moveStar from within an animation block.  
+// Like most of the routines here, this is broken up into two parts:  a routine that does the actual view manipulation, and a second routine that includes the changes to the view in an animation block.  In this case, moveStar does the work of moving the star, moveStarAnimated: calls moveStar from within an animation block.  
 
 -(void)moveStar
 {
@@ -85,6 +87,8 @@ static float speedSetting = 1.0;
 
 
 #pragma mark Zoom Star
+
+//  zoomStar follows the same model as moveStar.  There's a non-animated method that does the actual work, then second method that encloses the first method in an animation block.
 
 -(void)zoomStar
 {
@@ -122,6 +126,8 @@ static float speedSetting = 1.0;
 
 // This routine involves some more complex code.  We're not just altering view properties here, we're actually manipulating the properties of its underlying layer.  
 
+//  To understand this code, it is important to note that we set up some of the layer's shadow properties in the viewDidLoad method.
+
 -(void)changeShadow
 {
     CGFloat targetOpacity = !self.starImage.layer.shadowOpacity;
@@ -135,7 +141,7 @@ static float speedSetting = 1.0;
     self.starImage.layer.shadowOpacity = targetOpacity;
 }
 
-// We could do all of these calls in blocks, but we'll use peformSelector:withObject:afterDelay: to show a different way to do delayed code execution.  
+// We could do all of these calls in blocks, but we'll use peformSelector:withObject:afterDelay: to show a another way that iOS developers sometimes do delayed code execution.  
 
 -(IBAction)changeShadowAnimated:(id)sender
 {
@@ -154,12 +160,14 @@ static float speedSetting = 1.0;
 
 #pragma mark Spin
 
-// For reasons that will become clear in the Problem Animations code, we need to do our star rotation as a series of quarter rotations.  Thus, our code looks like the following.  
+// For reasons that will become clear in the Problem Animations code, we need to do our star rotation as a series of quarter rotations.  As before, we have two methods:  one to do the work, the other to enclose the first method in an animation block.
 
 -(void)spinStar
 {
     self.starImage.transform = CGAffineTransformRotate(self.starImage.transform, .5 * M_PI);
 }
+
+//  Note that this second method is a recursive method.  It calls itself until repeatedly until its animationCounter variable reaches 8.  At that point it resets the counter and stops calling itself.
 
 -(IBAction)spinStarAnimated:(id)sender
 {
@@ -178,6 +186,24 @@ static float speedSetting = 1.0;
         
         animationCounter == 8 ? animationCounter = 0 : [self spinStarAnimated:nil];
     }];
+}
+
+//  Fading things in and out is one of the most common animations that you'll use in any app.  
+
+
+- (IBAction)fadeStarAnimated:(id)sender 
+{
+    [UIView animateWithDuration:3 animations:^
+     {
+         self.starImage.alpha = 0;
+     }
+     completion:^(BOOL finished)
+     {
+         [UIView animateWithDuration:3 animations:^
+          {
+              self.starImage.alpha = 1;
+          }];
+     }];
 }
 
 @end
