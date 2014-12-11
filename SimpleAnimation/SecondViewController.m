@@ -167,7 +167,7 @@
 
 -(IBAction)spinStarAnimated:(id)sender
 {
-    static int animationCounter = 0;
+    static NSInteger animationCounter = 0;
     
     [UIView animateWithDuration:1.0
                           delay:0

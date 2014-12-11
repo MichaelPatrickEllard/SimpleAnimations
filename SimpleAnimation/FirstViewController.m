@@ -225,7 +225,7 @@
 -(void)applyActionToEachLetterInTurn:(SEL)selector 
                  delayBetweenLetters:(NSTimeInterval)delayBetweenLetters 
 {
-    uint letterCounter = 0;
+    NSInteger letterCounter = 0;
     
     for (SALetterLabel *letter in self.letters)
     {
