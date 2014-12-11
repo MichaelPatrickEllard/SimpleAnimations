@@ -33,7 +33,7 @@
 		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
 		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
 		E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemAnimations.xib; sourceTree = "<group>"; };
-		E3887CF415BAA45700C6932C /* About this Project.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "About this Project.rtf"; sourceTree = "<group>"; };
+		E3D0D4F71A3A46CB00C11B8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3DC962815744B8500C3B308 /* SALetterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SALetterLabel.h; sourceTree = "<group>"; };
 		E3DC962915744B8500C3B308 /* SALetterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SALetterLabel.m; sourceTree = "<group>"; };
 		E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +79,7 @@
 		E3F1CC8515739D5C00B09295 = {
 			isa = PBXGroup;
 			children = (
-				E3887CF415BAA45700C6932C /* About this Project.rtf */,
+				E3D0D4F71A3A46CB00C11B8C /* README.md */,
 				E3F1CC9A15739D5D00B09295 /* SimpleAnimation */,
 				E3F1CC9315739D5D00B09295 /* Frameworks */,
 				E3F1CC9115739D5D00B09295 /* Products */,

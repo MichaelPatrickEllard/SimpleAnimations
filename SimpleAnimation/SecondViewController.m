@@ -7,6 +7,9 @@
 //
 //  This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
+//  One interesting feature illustrated by this screen:  you can have multiple animations running at the same time, even if the start and stop times for those animations are not the same.  Thus, you can start a second animation while the first animation is still running, and both animations will run at the same time and each will finish according to the duration you set for that animation.  You can have a number of different animations running at once, each with a different start and stop time.
+
+
 #import "SecondViewController.h"
 
 
