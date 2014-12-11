@@ -7,28 +7,130 @@
 //
 //  This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
+
 #import "FirstViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import <QuartzCore/CAAnimation.h>
 
 #import "SALetterLabel.h"
 
+
 @interface FirstViewController ()
+
+#pragma mark - Properties
+
+@property (strong, nonatomic) IBOutlet UILabel *startingA;
+
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *letters;
+
+@property (strong, nonatomic) SALetterLabel *firstLetter;
+
+@property (strong, nonatomic) NSArray *allLetters;
+
+@property (strong, nonatomic) NSMutableArray *containerViews;
+@property (strong, nonatomic) NSMutableArray *cardBacks;
 
 @end
 
+
 @implementation FirstViewController
-@synthesize startingA;
-@synthesize letters;
-
-@synthesize firstLetter;
-@synthesize allLetters;
-
-@synthesize containerViews;
-@synthesize cardBacks;
 
 
-static float speedSetting = 1.0;  // Changes to this will speed up or slow down our animations
+#pragma mark - Initializer
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+        self.title = NSLocalizedString(@"First", @"First");
+        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+    }
+    return self;
+}
+
+
+#pragma mark - View Lifecycle Routines
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Let's do some setup of our Letter views.
+    
+    // The first view sometimes gets special treatment, so we're going to store it in its own special object.  We're going to also store its default center and frame so that we can restore them later if we need to.
+    
+    self.firstLetter = [SALetterLabel new];
+    self.firstLetter.letter = self.startingA;
+    self.firstLetter.homeRect = self.firstLetter.letter.frame;
+    self.firstLetter.homeCenter = self.firstLetter.letter.center;
+    
+    // Now let's store the view, frame, and center information for all of our letter views.  By putting it in an array, we'll be able to use fast enumeration later.
+    
+    NSMutableArray *letterArray = [NSMutableArray new];
+    
+    for (UILabel *thisLabel in self.letters)
+    {
+        SALetterLabel *newLabel = [SALetterLabel new];
+        
+        newLabel.letter = thisLabel;
+        newLabel.homeCenter = thisLabel.center;
+        newLabel.homeRect = thisLabel.frame;
+        
+        [letterArray addObject:newLabel];
+    }
+    
+    self.allLetters = letterArray;
+}
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //  Let's do some standard setup that will always be true.
+    
+    for (SALetterLabel *thisLabel in self.allLetters)
+    {
+        thisLabel.letter.layer.borderColor = [[UIColor blackColor] CGColor];
+        thisLabel.letter.layer.borderWidth = 3.0;
+        thisLabel.letter.layer.cornerRadius = 15.0;
+    }
+    
+    //  Now let's do some special setup for our first animation
+    
+    [self hideAllLettersBehindA];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Let's start with a simple animation that will move all of the letters to their home position.
+    
+    [UIView animateWithDuration:2.0
+                     animations:^
+     {
+         [self moveLetterViewsToHomePositions];
+     }
+                     completion:^(BOOL finished)
+     {
+         // Now, in the completion block, we'll "deal" them out one by one, like cards.
+         
+         [self dealLettersOneByOne];
+         
+         // Finally, after that's done, we'll change their colors, one-by-one
+         
+         [self performSelector:@selector(changeColorsOneByOne)
+                    withObject:nil
+                    afterDelay:7];
+         
+         
+         [self performSelector:@selector(demoViewTransitions)
+                    withObject:nil
+                    afterDelay:12];
+     }];
+}
+
 
 #pragma mark - Unanimated view changes
 
@@ -53,9 +155,9 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
 
 - (void)hideAllButA
 {
-    for (SALetterLabel *thisLetter in allLetters)
+    for (SALetterLabel *thisLetter in self.allLetters)
     {
-        thisLetter.letter.alpha = (thisLetter.letter == firstLetter.letter);
+        thisLetter.letter.alpha = (thisLetter.letter == self.firstLetter.letter);
     }
 }
 
@@ -105,7 +207,7 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
     
     //  The final animation block will take the backing view's alpha to 0.  In its completion block, we'll remove the backing view from its superview.   
     
-    [UIView animateWithDuration:1.0*speedSetting animations:^
+    [UIView animateWithDuration:1.0 animations:^
     {
          tempView.backgroundColor = [UIColor colorWithRed:0/255.0
                                                     green:100/255.0 
@@ -164,7 +266,7 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
 -(void)changeColorsOneByOne
 {
     [self applyActionToEachLetterInTurn:@selector(colorLetter:)     
-                    delayBetweenLetters:0.4*speedSetting];
+                    delayBetweenLetters:0.4];
 }
 
 
@@ -172,7 +274,7 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
 
 -(void)dealLettersOneByOne
 {
-    [UIView animateWithDuration:1.0*speedSetting 
+    [UIView animateWithDuration:1.0
                      animations:^
      {
          [self hideAllButA];
@@ -185,8 +287,8 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
          
          for (SALetterLabel *thisLabel in [self.allLetters reverseObjectEnumerator]) 
          {
-            [UIView animateWithDuration:0.5*speedSetting 
-                                   delay:letterCounter * 1 * speedSetting 
+            [UIView animateWithDuration:0.5
+                                   delay:letterCounter
                                  options:UIViewAnimationOptionCurveLinear
                               animations:^
             {
@@ -199,7 +301,7 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
      }];
 }
 
-#pragma mark - View Transition demo routines
+#pragma mark - View Transition Animations
 
 //  Up until now, all of our animations have used [UIView animate...] calls.  Here's a different way of doing animations... using the [UIView transitionWithView...] method.
 
@@ -213,37 +315,37 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
 {
         
     [UIView transitionWithView:containerView 
-                      duration:2.5*speedSetting
+                      duration:2.5
                        options:UIViewAnimationOptionTransitionFlipFromLeft 
                     animations:^
      {
          [fromView removeFromSuperview];
          [containerView addSubview:cardBack];
      }
-                    completion:^(BOOL finished)
+    completion:^(BOOL finished)
      {
          [UIView transitionWithView:containerView 
-                           duration:2.5*speedSetting
+                           duration:2.5
                             options:UIViewAnimationOptionTransitionCurlUp 
                          animations:^
           {
               [cardBack removeFromSuperview];
               [containerView addSubview:fromView];
           }
-                         completion:^(BOOL finished)
+          completion:^(BOOL finished)
           {
               [UIView transitionWithView:containerView 
-                                duration:2.5*speedSetting
+                                duration:2.5
                                  options:UIViewAnimationOptionTransitionFlipFromBottom 
                               animations:^
                {
                    [fromView removeFromSuperview];
                    [containerView addSubview:cardBack];
                }
-                              completion:^(BOOL finished)
+               completion:^(BOOL finished)
                {
                    [UIView transitionWithView:containerView 
-                                     duration:5*speedSetting
+                                     duration:5
                                       options:UIViewAnimationOptionTransitionCrossDissolve 
                                    animations:^
                     {
@@ -272,9 +374,9 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
     for (int i = 0; i < [[self allLetters] count]; i++)
     {
     
-        containerView = [containerViews objectAtIndex:i];
+        containerView = [self.containerViews objectAtIndex:i];
         fromView = [[self.allLetters objectAtIndex:i] letter];
-        cardBack = [cardBacks objectAtIndex:i];
+        cardBack = [self.cardBacks objectAtIndex:i];
         
         [self transitionWithContainer:containerView 
                                   labelView:fromView 
@@ -302,7 +404,7 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
         
         tempView.backgroundColor = [UIColor whiteColor];
         
-        [containerViews addObject:tempView];
+        [self.containerViews addObject:tempView];
         
         [self.view addSubview:tempView];
         
@@ -335,129 +437,11 @@ static float speedSetting = 1.0;  // Changes to this will speed up or slow down 
         tempView.layer.borderWidth = eachLetter.letter.layer.borderWidth;
         tempView.layer.borderColor = eachLetter.letter.layer.borderColor;
         
-        [cardBacks addObject:tempView];
+        [self.cardBacks addObject:tempView];
     }
     
-    [self performSelector:@selector(executeTransitions) withObject:nil afterDelay:1.0*speedSetting];
+    [self performSelector:@selector(executeTransitions) withObject:nil afterDelay:1.0];
      
-}
-
-
-#pragma mark - Standard View Controller Routines
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) 
-    {
-        self.title = NSLocalizedString(@"First", @"First");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
-    }
-    return self;
-}
-
-#pragma mark - View Lifecycle Routines
-							
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Let's do some setup of our Letter views.
-    
-    // The first view sometimes gets special treatment, so we're going to store it in its own special object.  We're going to also store its default center and frame so that we can restore them later if we need to.  
-    
-    self.firstLetter = [SALetterLabel new];
-    self.firstLetter.letter = self.startingA;
-    self.firstLetter.homeRect = self.firstLetter.letter.frame;
-    self.firstLetter.homeCenter = self.firstLetter.letter.center;
-    
-    // Now let's store the view, frame, and center information for all of our letter views.  By putting it in an array, we'll be able to use fast enumeration later.  
-    
-    NSMutableArray *letterArray = [NSMutableArray array];
-    
-    for (UILabel *thisLabel in self.letters) 
-    {
-        SALetterLabel *newLabel = [SALetterLabel new];
-        
-        newLabel.letter = thisLabel;
-        newLabel.homeCenter = thisLabel.center;
-        newLabel.homeRect = thisLabel.frame;
-        
-        [letterArray addObject:newLabel];
-    }
-    
-    self.allLetters = letterArray;
-}
-
-- (void)viewDidUnload
-{
-    // Let's let go of all of the objects that we got when the nib loaded.
-    
-    [self setStartingA:nil];
-    [self setLetters:nil];
-    
-    // Okay, now let's let go of all of the objects we created in viewDidLoad
-    
-    [self setFirstLetter:nil];
-    [self setAllLetters:nil];
-    
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    //  Let's do some standard setup that will always be true.
-    
-    for (SALetterLabel *thisLabel in self.allLetters) 
-    {
-        thisLabel.letter.layer.borderColor = [[UIColor blackColor] CGColor];
-        thisLabel.letter.layer.borderWidth = 3.0;
-        thisLabel.letter.layer.cornerRadius = 15.0;
-    }
-    
-    //  Now let's do some special setup for our first animation
-    
-    [self hideAllLettersBehindA];
-}
-
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    // Let's start with a simple animation that will move all of the letters to their home position.
-    
-    [UIView animateWithDuration:2.0*speedSetting 
-                     animations:^
-     {
-         [self moveLetterViewsToHomePositions];
-     }
-     completion:^(BOOL finished)
-     {
-         // Now, in the completion block, we'll "deal" them out one by one, like cards.  
-         
-         [self dealLettersOneByOne];
-         
-         // Finally, after that's done, we'll change their colors, one-by-one
-         
-         [self performSelector:@selector(changeColorsOneByOne) 
-                    withObject:nil 
-                    afterDelay:7*speedSetting];
-         
-         
-         [self performSelector:@selector(demoViewTransitions)
-                    withObject:nil
-                    afterDelay:12*speedSetting];
-     }];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 

@@ -8,17 +8,16 @@
 //  This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 #import "SecondViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import <QuartzCore/CAAnimation.h>
+
 
 @interface SecondViewController ()
 
+@property (strong, nonatomic) IBOutlet UIImageView *starImage;
+
 @end
 
-@implementation SecondViewController
-@synthesize starImage;
 
-static float speedSetting = 1.0;
+@implementation SecondViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,14 +29,13 @@ static float speedSetting = 1.0;
     }
     return self;
 }
+
 							
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	
-    //  Let's set up the layer's shadow options.  This will help us twinkle when it's time.
-    
-    //  Note: As you can see from the code below, shadows don't have to be gray.  They can be any color you'd like.  
+    //  Setting up the layer's shadow options.  This will help us twinkle when it's time.
     
     self.starImage.layer.shadowOffset = CGSizeMake(0,0);
     self.starImage.layer.shadowColor = [[UIColor orangeColor] CGColor];
@@ -45,17 +43,9 @@ static float speedSetting = 1.0;
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
+#pragma mark - Move Star
 
-
-
-
-#pragma mark Move Star
-
-// Like most of the routines here, this is broken up into two parts:  a routine that does the actual view manipulation, and a second routine that includes the changes to the view in an animation block.  In this case, moveStar does the work of moving the star, moveStarAnimated: calls moveStar from within an animation block.  
+//  Like most of the routines here, this is broken up into two parts:  a routine that does the actual view manipulation, and a second routine that includes the changes to the view in an animation block.  In this case, moveStar does the work of moving the star, moveStarAnimated: calls moveStar from within an animation block.
 
 -(void)moveStar
 {
@@ -79,14 +69,14 @@ static float speedSetting = 1.0;
 
 -(IBAction)moveStarAnimated:(id)sender
 {
-    [UIView animateWithDuration:5.0*speedSetting animations:^
+    [UIView animateWithDuration:5.0 animations:^
      {
          [self moveStar];
      }];
 }
 
 
-#pragma mark Zoom Star
+#pragma mark - Zoom Star
 
 //  zoomStar follows the same model as moveStar.  There's a non-animated method that does the actual work, then second method that encloses the first method in an animation block.
 
@@ -114,7 +104,7 @@ static float speedSetting = 1.0;
 
 -(IBAction)zoomStarAnimated:(id)sender
 {
-    [UIView animateWithDuration:3.5*speedSetting animations:^
+    [UIView animateWithDuration:3.5 animations:^
      {
          [self zoomStar];
      }];
@@ -135,11 +125,12 @@ static float speedSetting = 1.0;
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"shadowOpacity"];
     anim.fromValue = [NSNumber numberWithFloat:self.starImage.layer.shadowOpacity];
     anim.toValue = [NSNumber numberWithFloat:targetOpacity];
-    anim.duration = 1.0 * speedSetting;
+    anim.duration = 1.0;
     [self.starImage.layer addAnimation:anim forKey:@"shadowOpacity"];
     
     self.starImage.layer.shadowOpacity = targetOpacity;
 }
+
 
 // We could do all of these calls in blocks, but we'll use peformSelector:withObject:afterDelay: to show a another way that iOS developers sometimes do delayed code execution.  
 
@@ -147,18 +138,19 @@ static float speedSetting = 1.0;
 {
     [self changeShadow];
     
-    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:1.1 * speedSetting];
+    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:1.1];
     
-    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:2.2 * speedSetting];
+    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:2.2];
     
-    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:3.3 * speedSetting];
+    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:3.3];
     
-    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:4.4 * speedSetting];
+    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:4.4];
     
-    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:5.5 * speedSetting];
+    [self performSelector:@selector(changeShadow) withObject:nil afterDelay:5.5];
 }
 
-#pragma mark Spin
+
+#pragma mark - Spin
 
 // For reasons that will become clear in the Problem Animations code, we need to do our star rotation as a series of quarter rotations.  As before, we have two methods:  one to do the work, the other to enclose the first method in an animation block.
 
@@ -167,13 +159,14 @@ static float speedSetting = 1.0;
     self.starImage.transform = CGAffineTransformRotate(self.starImage.transform, .5 * M_PI);
 }
 
+
 //  Note that this second method is a recursive method.  It calls itself until repeatedly until its animationCounter variable reaches 8.  At that point it resets the counter and stops calling itself.
 
 -(IBAction)spinStarAnimated:(id)sender
 {
     static int animationCounter = 0;
     
-    [UIView animateWithDuration:1.0 * speedSetting
+    [UIView animateWithDuration:1.0
                           delay:0
                         options:UIViewAnimationOptionCurveLinear
                      animations:^
@@ -188,8 +181,8 @@ static float speedSetting = 1.0;
     }];
 }
 
-//  Fading things in and out is one of the most common animations that you'll use in any app.  
 
+//  Fading things in and out is one of the most common animations that you'll use in any app.  
 
 - (IBAction)fadeStarAnimated:(id)sender 
 {

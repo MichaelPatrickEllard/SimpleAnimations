@@ -11,27 +11,31 @@
 
 @interface ProblemAnimations ()
 
+#pragma mark - Properties
+
+@property (strong, nonatomic) IBOutlet UIImageView *nonFadingStar;
+@property (strong, nonatomic) IBOutlet UIImageView *blinkStar;
+@property (strong, nonatomic) IBOutlet UIView *blinkHelperView;
+@property (strong, nonatomic) IBOutlet UIImageView *fadeStar;
+
+@property (strong, nonatomic) IBOutlet UIView *rotateColorProblemView;
+@property (strong, nonatomic) IBOutlet UIView *rotateColorWorkingView;
+
+@property (strong, nonatomic) IBOutlet UIView *flipTooMuchView;
+@property (strong, nonatomic) IBOutlet UIView *flipCorrectlyView;
+@property (strong, nonatomic) IBOutlet UIView *flipCorrectlyBacking;
+
+@property (strong, nonatomic) IBOutlet UIImageView *immobileStar;
+@property (strong, nonatomic) IBOutlet UIImageView *wrongWayStar;
+@property (strong, nonatomic) IBOutlet UIImageView *jerkyStar;
+@property (strong, nonatomic) IBOutlet UIImageView *correctStar;
+
 @end
 
 @implementation ProblemAnimations
-@synthesize jerkyStar;
-@synthesize correctStar;
-@synthesize immobileStar;
-@synthesize wrongWayStar;
 
-@synthesize flipTooMuchView;
-@synthesize flipTooLittleView;
-@synthesize flipTooLittleBacking;
-@synthesize flipCorrectlyView;
-@synthesize flipCorrectlyBacking;
-@synthesize rotateColorProblemView;
-@synthesize rotateColorWorkingView;
-@synthesize nonFadingStar;
-@synthesize blinkStar;
-@synthesize blinkHelperView;
-@synthesize fadeStar;
 
-#pragma mark Standard Viewcontroller Housekeeping methods
+#pragma mark - Initializers
 
 // There's not much going on here in initWithNibName.  We do set the title and tab bar image so that this view controller's name and image will be shown in the tab bar.
 
@@ -45,34 +49,6 @@
     return self;
 }
 
-// A standard viewDidUnload here.  All the code in this method was automatically created by Xcode when we dragged established connections between our .xib file and our .h file using the Connections Inspector in Interface Builder.  
-
-- (void)viewDidUnload
-{
-    [self setBlinkStar:nil];
-    [self setFadeStar:nil];
-    [self setRotateColorProblemView:nil];
-    [self setRotateColorWorkingView:nil];
-    [self setFlipTooMuchView:nil];
-    [self setFlipTooLittleView:nil];
-    [self setFlipTooLittleBacking:nil];
-    [self setFlipCorrectlyView:nil];
-    [self setFlipCorrectlyBacking:nil];
-    [self setImmobileStar:nil];
-    [self setWrongWayStar:nil];
-    [self setJerkyStar:nil];
-    [self setCorrectStar:nil];
-    [self setNonFadingStar:nil];
-    [self setBlinkHelperView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
 
 #pragma mark - Star Fade examples
 
@@ -219,24 +195,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
 }
 
 
-// This method doesn't work.  Everything is correct, but there's one problem: there are a couple of Apple constants that have very similar names.  The correct option here is UIViewAnimationOptionTransitionFlipFromLeft.  We've used UIViewAnimationTransitionFlipFromLeft - note the lack of 'Option' in the middle - and that makes the animation fail.  
-
-- (IBAction)flipTooLittlePressed:(id)sender 
-{
-    UIView *copiedView = [[UIView alloc] initWithFrame:self.flipTooLittleView.frame];
-    copiedView.backgroundColor = self.flipTooLittleView.backgroundColor;
-    
-    [UIView transitionFromView:self.flipTooLittleView
-                        toView:copiedView
-                      duration:1.0 
-                       options:UIViewAnimationTransitionFlipFromLeft 
-                    completion:^(BOOL finished)
-     {
-         self.flipTooLittleView = copiedView;
-     }];
-}
-
-// This method works correctly.  We create a new view, and flip to it!  Woo hoo, it works!
+// This method works correctly.  We create a new view, and flip to it!
 
 - (IBAction)flipCorrectlyPressed:(id)sender 
 {
@@ -269,7 +228,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
     [UIView animateWithDuration:1.0
                      animations:^
      {
-         [self spinStar:immobileStar noOfRotations:1];
+         [self spinStar:self.immobileStar noOfRotations:1];
      }];
 }
 
@@ -282,7 +241,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
     [UIView animateWithDuration:1.0
                     animations:^
     {
-         [self spinStar:wrongWayStar noOfRotations:0.5];
+         [self spinStar:self.wrongWayStar noOfRotations:0.5];
     }];
 }
 
@@ -295,7 +254,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
     [UIView animateWithDuration:1.0
                      animations:^
      {
-         [self spinStar:jerkyStar noOfRotations:0.25];
+         [self spinStar:self.jerkyStar noOfRotations:0.25];
      }
                      completion:^(BOOL finished)
      {
@@ -316,7 +275,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
                         options:UIViewAnimationOptionCurveLinear
                      animations:^
      {
-         [self spinStar:correctStar noOfRotations:.25];
+         [self spinStar:self.correctStar noOfRotations:.25];
      }
                      completion:^(BOOL finished)
      {
