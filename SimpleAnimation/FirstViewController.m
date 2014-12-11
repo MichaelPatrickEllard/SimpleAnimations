@@ -17,13 +17,9 @@
 
 #pragma mark - Properties
 
-@property (strong, nonatomic) IBOutlet UILabel *startingA;
+@property (strong, nonatomic) IBOutlet SALetterLabel *startingA;
 
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *letters;
-
-@property (strong, nonatomic) SALetterLabel *firstLetter;
-
-@property (strong, nonatomic) NSArray *allLetters;
+@property (strong, nonatomic) IBOutletCollection(SALetterLabel) NSArray *letters;
 
 @property (strong, nonatomic) NSMutableArray *containerViews;
 @property (strong, nonatomic) NSMutableArray *cardBacks;
@@ -54,31 +50,13 @@
 {
     [super viewDidLoad];
     
-    // Let's do some setup of our Letter views.
+    // Store the view, frame, and center information for all of our letter views.
     
-    // The first view sometimes gets special treatment, so we're going to store it in its own special object.  We're going to also store its default center and frame so that we can restore them later if we need to.
-    
-    self.firstLetter = [SALetterLabel new];
-    self.firstLetter.letter = self.startingA;
-    self.firstLetter.homeRect = self.firstLetter.letter.frame;
-    self.firstLetter.homeCenter = self.firstLetter.letter.center;
-    
-    // Now let's store the view, frame, and center information for all of our letter views.  By putting it in an array, we'll be able to use fast enumeration later.
-    
-    NSMutableArray *letterArray = [NSMutableArray new];
-    
-    for (UILabel *thisLabel in self.letters)
+    for (SALetterLabel *label in self.letters)
     {
-        SALetterLabel *newLabel = [SALetterLabel new];
-        
-        newLabel.letter = thisLabel;
-        newLabel.homeCenter = thisLabel.center;
-        newLabel.homeRect = thisLabel.frame;
-        
-        [letterArray addObject:newLabel];
+        label.homeCenter = label.center;
+        label.homeRect = label.frame;
     }
-    
-    self.allLetters = letterArray;
 }
 
 
@@ -86,13 +64,14 @@
 {
     [super viewWillAppear:animated];
     
-    //  Let's do some standard setup that will always be true.
-    
-    for (SALetterLabel *thisLabel in self.allLetters)
+    for (SALetterLabel *letter in self.letters)
     {
-        thisLabel.letter.layer.borderColor = [[UIColor blackColor] CGColor];
-        thisLabel.letter.layer.borderWidth = 3.0;
-        thisLabel.letter.layer.cornerRadius = 15.0;
+        letter.layer.borderColor = [[UIColor blackColor] CGColor];
+        letter.layer.borderWidth = 3.0;
+        letter.layer.cornerRadius = 15.0;
+        
+        letter.backgroundColor = [UIColor whiteColor];
+        letter.alpha = 1;
     }
     
     //  Now let's do some special setup for our first animation
@@ -112,7 +91,7 @@
      {
          [self moveLetterViewsToHomePositions];
      }
-                     completion:^(BOOL finished)
+     completion:^(BOOL finished)
      {
          // Now, in the completion block, we'll "deal" them out one by one, like cards.
          
@@ -140,11 +119,9 @@
 
 -(void)hideAllLettersBehindA
 {
-    for (SALetterLabel *thisLabel in self.allLetters) 
+    for (SALetterLabel *label in self.letters)
     {
-        thisLabel.letter.backgroundColor = [UIColor whiteColor];
-        thisLabel.letter.center = self.firstLetter.homeCenter;
-        thisLabel.letter.alpha = 1;
+        label.center = self.startingA.homeCenter;
     }
 }
 
@@ -155,9 +132,9 @@
 
 - (void)hideAllButA
 {
-    for (SALetterLabel *thisLetter in self.allLetters)
+    for (SALetterLabel *letter in self.letters)
     {
-        thisLetter.letter.alpha = (thisLetter.letter == self.firstLetter.letter);
+        letter.alpha = (letter == self.startingA);
     }
 }
 
@@ -167,7 +144,7 @@
 
 -(void)moveLetterViewToHomePosition:(SALetterLabel *)whichLetter
 {
-    whichLetter.letter.center = whichLetter.homeCenter;
+    whichLetter.center = whichLetter.homeCenter;
 }
 
 
@@ -175,9 +152,9 @@
 
 -(void)moveLetterViewsToHomePositions
 {
-    for (SALetterLabel *thisLabel in self.allLetters)
+    for (SALetterLabel *thisLabel in self.letters)
     {
-        thisLabel.letter.center = thisLabel.homeCenter;   
+        thisLabel.center = thisLabel.homeCenter;
     }
 }
 
@@ -189,19 +166,19 @@
     
     //  First let's make our letter view transparent, so we'll be able to see the new view behind it.
     
-        whichLetter.letter.backgroundColor = [UIColor clearColor];
+        whichLetter.backgroundColor = [UIColor clearColor];
     
     //  Next let's create the backing view that we'll use for the color transitions.
     
-    UIView *tempView = [[UIView alloc] initWithFrame:whichLetter.letter.frame];
+    UIView *tempView = [[UIView alloc] initWithFrame:whichLetter.frame];
     
     tempView.backgroundColor = [UIColor clearColor];
-    tempView.layer.cornerRadius = whichLetter.letter.layer.cornerRadius;
+    tempView.layer.cornerRadius = whichLetter.layer.cornerRadius;
     
     //  Note that we're not just using addSubview:.  insertSubview: belowSubview: allows us to put the view behind the view we want it to provide the background for.  If we just used addSubview:, the new view would be drawn in front of the existing view.
     
-    [whichLetter.letter.superview insertSubview:tempView 
-                                   belowSubview:whichLetter.letter];
+    [whichLetter.superview insertSubview:tempView
+                                   belowSubview:whichLetter];
     
     //  Now the fun - let's start changing colors!  We're going to user several nested animations with completion blocks.  In each completion block we'll start the animation to the next color.  
     
@@ -250,10 +227,10 @@
 {
     uint letterCounter = 0;
     
-    for (SALetterLabel *thisLabel in self.allLetters) 
+    for (SALetterLabel *letter in self.letters)
     {
         [self performSelector:selector
-                   withObject:thisLabel 
+                   withObject:letter
                    afterDelay:delayBetweenLetters * letterCounter];
         
         letterCounter++;
@@ -283,18 +260,20 @@
      {
          [self hideAllLettersBehindA];
          
-         uint letterCounter = 0;
+         NSInteger letterCounter = 0;
          
-         for (SALetterLabel *thisLabel in [self.allLetters reverseObjectEnumerator]) 
+         for (SALetterLabel *letter in [self.letters reverseObjectEnumerator])
          {
+            letter.alpha = 1;
+             
             [UIView animateWithDuration:0.5
                                    delay:letterCounter
                                  options:UIViewAnimationOptionCurveLinear
                               animations:^
             {
-                [self moveLetterViewToHomePosition:thisLabel];
+                [self moveLetterViewToHomePosition:letter];
             }
-            completion:NULL]; 
+            completion:NULL];
              
             letterCounter++;
          }
@@ -371,12 +350,12 @@
     UILabel *fromView;
     UIImageView *cardBack;
     
-    for (int i = 0; i < [[self allLetters] count]; i++)
+    for (int i = 0; i < [[self letters] count]; i++)
     {
     
-        containerView = [self.containerViews objectAtIndex:i];
-        fromView = [[self.allLetters objectAtIndex:i] letter];
-        cardBack = [self.cardBacks objectAtIndex:i];
+        containerView = self.containerViews[i];
+        fromView = self.letters[i];
+        cardBack = self.cardBacks[i];
         
         [self transitionWithContainer:containerView 
                                   labelView:fromView 
@@ -396,11 +375,11 @@
     
     self.containerViews = [NSMutableArray array];
     
-    for (SALetterLabel *eachLetter in self.allLetters)
+    for (SALetterLabel *eachLetter in self.letters)
     {
-        eachLetter.letter.backgroundColor = [UIColor whiteColor];
+        eachLetter.backgroundColor = [UIColor whiteColor];
         
-        tempView = [[UIView alloc] initWithFrame:eachLetter.letter.frame];
+        tempView = [[UIView alloc] initWithFrame:eachLetter.frame];
         
         tempView.backgroundColor = [UIColor whiteColor];
         
@@ -408,34 +387,33 @@
         
         [self.view addSubview:tempView];
         
-        CGRect tempRect = eachLetter.letter.frame;
+        CGRect tempRect = eachLetter.frame;
         tempRect.origin = CGPointMake(0,0);
         
-        eachLetter.letter.frame = tempRect;
+        eachLetter.frame = tempRect;
         
-        [tempView addSubview:eachLetter.letter];
-        
+        [tempView addSubview:eachLetter];
     }
     
     
     // Create an array of "card backs"
     
-    self.cardBacks = [NSMutableArray array];
+    self.cardBacks = [NSMutableArray new];
     
-    for (SALetterLabel *eachLetter in self.allLetters)
+    for (SALetterLabel *eachLetter in self.letters)
     {
-        eachLetter.letter.backgroundColor = [UIColor whiteColor];
+        eachLetter.backgroundColor = [UIColor whiteColor];
         
         tempView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GoldStar.png"]];
         
         tempView.contentMode = UIViewContentModeScaleAspectFit;
         
-        tempView.frame = eachLetter.letter.frame;
+        tempView.frame = eachLetter.frame;
         
         tempView.backgroundColor = [UIColor whiteColor];
-        tempView.layer.cornerRadius = eachLetter.letter.layer.cornerRadius;
-        tempView.layer.borderWidth = eachLetter.letter.layer.borderWidth;
-        tempView.layer.borderColor = eachLetter.letter.layer.borderColor;
+        tempView.layer.cornerRadius = eachLetter.layer.cornerRadius;
+        tempView.layer.borderWidth = eachLetter.layer.borderWidth;
+        tempView.layer.borderColor = eachLetter.layer.borderColor;
         
         [self.cardBacks addObject:tempView];
     }

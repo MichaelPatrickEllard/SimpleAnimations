@@ -9,9 +9,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SALetterLabel : NSObject
+@interface SALetterLabel : UILabel
 
-@property (nonatomic,strong) UILabel *letter;
 @property CGPoint homeCenter;
 @property CGRect homeRect;
 
