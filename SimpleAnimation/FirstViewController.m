@@ -279,24 +279,12 @@
 
 -(void)demoViewTransition:(UIViewAnimationOptions)options
 {
-    for (int i = 0; i < [self.letters count]; i++)
+    for (NSInteger i = 0; i < [self.letters count]; i++)
     {
         UIView *containerView = self.containerViews[i];
-        UIView *letterView = self.letters[i];
         
-        UIView *fromView;
-        UIView *toView;
-        
-        if (letterView.superview)
-        {
-            fromView = letterView;
-            toView = self.flipsides[i];
-        }
-        else
-        {
-            fromView = self.flipsides[i];
-            toView = letterView;
-        }
+        UIView *fromView = [self transitionDemoFromViewForIndex:i];
+        UIView *toView = [self transitionDemoToViewForIndex:i];
         
         [UIView transitionWithView:containerView
                           duration:2.5
@@ -319,6 +307,21 @@
              }
          }];
     }
+}
+
+-(UIView *)transitionDemoFromViewForIndex:(NSInteger)index
+{
+    UIView *letterView = self.letters[index];
+    
+    return [letterView superview] ? letterView : self.flipsides[index];
+}
+
+
+-(UIView *)transitionDemoToViewForIndex:(NSInteger)index
+{
+    UIView *letterView = self.letters[index];
+    
+    return [letterView superview] ? self.flipsides[index] : letterView;
 }
 
 
