@@ -13,7 +13,7 @@
 		E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */; };
 		E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */; };
 		E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */; };
-		E3DC962A15744B8500C3B308 /* SALetterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC962915744B8500C3B308 /* SALetterLabel.m */; };
+		E3DC962A15744B8500C3B308 /* DemoLetterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC962915744B8500C3B308 /* DemoLetterLabel.m */; };
 		E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9415739D5D00B09295 /* UIKit.framework */; };
 		E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9615739D5D00B09295 /* Foundation.framework */; };
 		E3F1CC9915739D5D00B09295 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */; };
@@ -38,8 +38,8 @@
 		E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
 		E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
 		E3D0D4F71A3A46CB00C11B8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E3DC962815744B8500C3B308 /* SALetterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SALetterLabel.h; sourceTree = "<group>"; };
-		E3DC962915744B8500C3B308 /* SALetterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SALetterLabel.m; sourceTree = "<group>"; };
+		E3DC962815744B8500C3B308 /* DemoLetterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoLetterLabel.h; sourceTree = "<group>"; };
+		E3DC962915744B8500C3B308 /* DemoLetterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoLetterLabel.m; sourceTree = "<group>"; };
 		E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F1CC9415739D5D00B09295 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E3F1CC9615739D5D00B09295 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,8 +113,8 @@
 				E3F1CCA615739D5D00B09295 /* DemoViewController.h */,
 				E3F1CCA715739D5D00B09295 /* DemoViewController.m */,
 				E3F1CCB415739D5D00B09295 /* DemoViewController.xib */,
-				E3DC962815744B8500C3B308 /* SALetterLabel.h */,
-				E3DC962915744B8500C3B308 /* SALetterLabel.m */,
+				E3DC962815744B8500C3B308 /* DemoLetterLabel.h */,
+				E3DC962915744B8500C3B308 /* DemoLetterLabel.m */,
 				E3F1CCAD15739D5D00B09295 /* StarViewController.h */,
 				E3F1CCAE15739D5D00B09295 /* StarViewController.m */,
 				E3F1CCB715739D5D00B09295 /* StarViewController.xib */,
@@ -225,7 +225,7 @@
 				E3F1CCA515739D5D00B09295 /* AppDelegate.m in Sources */,
 				E3F1CCA815739D5D00B09295 /* DemoViewController.m in Sources */,
 				E3F1CCAF15739D5D00B09295 /* StarViewController.m in Sources */,
-				E3DC962A15744B8500C3B308 /* SALetterLabel.m in Sources */,
+				E3DC962A15744B8500C3B308 /* DemoLetterLabel.m in Sources */,
 				E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
