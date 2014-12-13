@@ -22,14 +22,18 @@ This work is licensed under the Creative Commons Attribution 3.0 Unported Licens
 
 -----
 
-Version 1.0 (July 21, 2012)
 
-Version 1.1 Updates (July 25, 2012).
+Version 2.0 Updates (Work-in-Progress, December 2014)
 
--	Improved the commenting in the ProblemAnimations.m file
--	Made the "blink star" code a little simpler and easier to understand
--	Altered the colors on the color rotate example to make the behavior easier to see and understand
--	Changed the ProblemAnimations.xib file so that the working animations are first in the series, followed by the problem animations.  In the previous version, the successful animations were last.  
+-	Modernization of Objective-C code
+-	Removed speedSetting static variable from project files.  This variable was never really used, and taking it out makes the code a little simpler.
+-	Removed the "Flip Too Little" example from the Problem Animations screen.  This animation demonstrated a problem that occurred in earlier versions of Xcode if some similarly named UIKit enumerations were used incorrectly.  Modern versions of Xcode flag this problem with a warning.  
+-	Converted "About this Project.rtf" to "README.md"
+-   Simplified SALetterLabel class and made it a child of UILabel
+-   Renamed FirstViewController and related files to DemoViewController. Renamed SecondViewController and related files to StarViewController
+-   Complete re-write of DemoViewController.  Broke up some longer methods and eliminated some sub-methods so that each of the eight animation demos is done by a concise method which is responsible only for that animation demo.
+-   Upgraded documentation of DemoViewController screen
+-   Added "Replay" button to DemoViewController screen
 
 Version 1.2 Updates (July 28, 2012)
 
@@ -42,13 +46,11 @@ Version 1.2 Updates (July 28, 2012)
 -	Wrote some additional comments for the Star Animations screen.
 -	Added descriptive labels to the Star screen and the Problems screen to help viewers understand the animations on each screen
 
-Version 2.0 Updates (Work-in-Progress, December 2014)
+Version 1.1 Updates (July 25, 2012).
 
--	Modernization of Objective-C code
--	Removed speedSetting static variable from project files.  This variable was never really used, and taking it out makes the code a little simpler.
--	Removed the "Flip Too Little" example from the Problem Animations screen.  This animation demonstrated a problem that occurred in earlier versions of Xcode if some similarly named UIKit enumerations were used incorrectly.  Modern versions of Xcode flag this problem with a warning.  
--	Converted "About this Project.rtf" to "README.md"
--   Simplified SALetterLabel class and made it a child of UILabel
--   Complete re-write of FirstViewController.  Broke up some longer methods and eliminated some sub-methods so that each of the eight animation demos is done by a concise method which is responsible only for that animation demo.
--   Upgraded documentation of FirstViewController screen
--   Added "Replay" button to FirstViewController screen
+-	Improved the commenting in the ProblemAnimations.m file
+-	Made the "blink star" code a little simpler and easier to understand
+-	Altered the colors on the color rotate example to make the behavior easier to see and understand
+-	Changed the ProblemAnimations.xib file so that the working animations are first in the series, followed by the problem animations.  In the previous version, the successful animations were last.  
+
+Version 1.0 (July 21, 2012)
