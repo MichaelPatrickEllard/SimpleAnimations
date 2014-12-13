@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "DemoViewController.h"
+#import "CardViewController.h"
 
 #import "StarViewController.h"
 
