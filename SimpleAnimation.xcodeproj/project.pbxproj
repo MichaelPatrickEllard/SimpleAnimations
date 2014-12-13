@@ -16,14 +16,14 @@
 		E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */; };
 		E3F1CCA115739D5D00B09295 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA015739D5D00B09295 /* main.m */; };
 		E3F1CCA515739D5D00B09295 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA415739D5D00B09295 /* AppDelegate.m */; };
-		E3F1CCA815739D5D00B09295 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA715739D5D00B09295 /* FirstViewController.m */; };
-		E3F1CCAA15739D5D00B09295 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCA915739D5D00B09295 /* first.png */; };
-		E3F1CCAC15739D5D00B09295 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCAB15739D5D00B09295 /* first@2x.png */; };
-		E3F1CCAF15739D5D00B09295 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCAE15739D5D00B09295 /* SecondViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E3F1CCB115739D5D00B09295 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB015739D5D00B09295 /* second.png */; };
-		E3F1CCB315739D5D00B09295 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB215739D5D00B09295 /* second@2x.png */; };
-		E3F1CCB615739D5D00B09295 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB415739D5D00B09295 /* FirstViewController.xib */; };
-		E3F1CCB915739D5D00B09295 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB715739D5D00B09295 /* SecondViewController.xib */; };
+		E3F1CCA815739D5D00B09295 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA715739D5D00B09295 /* DemoViewController.m */; };
+		E3F1CCAA15739D5D00B09295 /* DemoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCA915739D5D00B09295 /* DemoIcon.png */; };
+		E3F1CCAC15739D5D00B09295 /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCAB15739D5D00B09295 /* DemoIcon@2x.png */; };
+		E3F1CCAF15739D5D00B09295 /* StarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCAE15739D5D00B09295 /* StarViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E3F1CCB115739D5D00B09295 /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB015739D5D00B09295 /* StarIcon.png */; };
+		E3F1CCB315739D5D00B09295 /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB215739D5D00B09295 /* StarIcon@2x.png */; };
+		E3F1CCB615739D5D00B09295 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB415739D5D00B09295 /* DemoViewController.xib */; };
+		E3F1CCB915739D5D00B09295 /* StarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB715739D5D00B09295 /* StarViewController.xib */; };
 		E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC01573A1A700B09295 /* GoldStar.png */; };
 		E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */; };
 		E3F1CCC51573BA3C00B09295 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */; };
@@ -46,16 +46,16 @@
 		E3F1CCA215739D5D00B09295 /* SimpleAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Prefix.pch"; sourceTree = "<group>"; };
 		E3F1CCA315739D5D00B09295 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E3F1CCA415739D5D00B09295 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E3F1CCA615739D5D00B09295 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		E3F1CCA715739D5D00B09295 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		E3F1CCA915739D5D00B09295 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		E3F1CCAB15739D5D00B09295 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		E3F1CCAD15739D5D00B09295 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		E3F1CCAE15739D5D00B09295 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		E3F1CCB015739D5D00B09295 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		E3F1CCB215739D5D00B09295 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		E3F1CCB515739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
-		E3F1CCB815739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		E3F1CCA615739D5D00B09295 /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		E3F1CCA715739D5D00B09295 /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		E3F1CCA915739D5D00B09295 /* DemoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoIcon.png; sourceTree = "<group>"; };
+		E3F1CCAB15739D5D00B09295 /* DemoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DemoIcon@2x.png"; sourceTree = "<group>"; };
+		E3F1CCAD15739D5D00B09295 /* StarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StarViewController.h; sourceTree = "<group>"; };
+		E3F1CCAE15739D5D00B09295 /* StarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StarViewController.m; sourceTree = "<group>"; };
+		E3F1CCB015739D5D00B09295 /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
+		E3F1CCB215739D5D00B09295 /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
+		E3F1CCB515739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DemoViewController.xib; sourceTree = "<group>"; };
+		E3F1CCB815739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StarViewController.xib; sourceTree = "<group>"; };
 		E3F1CCC01573A1A700B09295 /* GoldStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoldStar.png; sourceTree = "<group>"; };
 		E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GoldStarDocumentation.pdf; sourceTree = "<group>"; };
 		E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -111,18 +111,18 @@
 				E3F1CCBF1573A1A700B09295 /* Graphics */,
 				E3F1CCA315739D5D00B09295 /* AppDelegate.h */,
 				E3F1CCA415739D5D00B09295 /* AppDelegate.m */,
-				E3F1CCA615739D5D00B09295 /* FirstViewController.h */,
-				E3F1CCA715739D5D00B09295 /* FirstViewController.m */,
-				E3F1CCB415739D5D00B09295 /* FirstViewController.xib */,
+				E3F1CCA615739D5D00B09295 /* DemoViewController.h */,
+				E3F1CCA715739D5D00B09295 /* DemoViewController.m */,
+				E3F1CCB415739D5D00B09295 /* DemoViewController.xib */,
 				E3DC962815744B8500C3B308 /* SALetterLabel.h */,
 				E3DC962915744B8500C3B308 /* SALetterLabel.m */,
-				E3F1CCA915739D5D00B09295 /* first.png */,
-				E3F1CCAB15739D5D00B09295 /* first@2x.png */,
-				E3F1CCAD15739D5D00B09295 /* SecondViewController.h */,
-				E3F1CCAE15739D5D00B09295 /* SecondViewController.m */,
-				E3F1CCB715739D5D00B09295 /* SecondViewController.xib */,
-				E3F1CCB015739D5D00B09295 /* second.png */,
-				E3F1CCB215739D5D00B09295 /* second@2x.png */,
+				E3F1CCA915739D5D00B09295 /* DemoIcon.png */,
+				E3F1CCAB15739D5D00B09295 /* DemoIcon@2x.png */,
+				E3F1CCAD15739D5D00B09295 /* StarViewController.h */,
+				E3F1CCAE15739D5D00B09295 /* StarViewController.m */,
+				E3F1CCB715739D5D00B09295 /* StarViewController.xib */,
+				E3F1CCB015739D5D00B09295 /* StarIcon.png */,
+				E3F1CCB215739D5D00B09295 /* StarIcon@2x.png */,
 				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
 				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
 				E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */,
@@ -202,12 +202,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */,
-				E3F1CCAA15739D5D00B09295 /* first.png in Resources */,
-				E3F1CCAC15739D5D00B09295 /* first@2x.png in Resources */,
-				E3F1CCB115739D5D00B09295 /* second.png in Resources */,
-				E3F1CCB315739D5D00B09295 /* second@2x.png in Resources */,
-				E3F1CCB615739D5D00B09295 /* FirstViewController.xib in Resources */,
-				E3F1CCB915739D5D00B09295 /* SecondViewController.xib in Resources */,
+				E3F1CCAA15739D5D00B09295 /* DemoIcon.png in Resources */,
+				E3F1CCAC15739D5D00B09295 /* DemoIcon@2x.png in Resources */,
+				E3F1CCB115739D5D00B09295 /* StarIcon.png in Resources */,
+				E3F1CCB315739D5D00B09295 /* StarIcon@2x.png in Resources */,
+				E3F1CCB615739D5D00B09295 /* DemoViewController.xib in Resources */,
+				E3F1CCB915739D5D00B09295 /* StarViewController.xib in Resources */,
 				E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */,
 				E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */,
 				E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */,
@@ -223,8 +223,8 @@
 			files = (
 				E3F1CCA115739D5D00B09295 /* main.m in Sources */,
 				E3F1CCA515739D5D00B09295 /* AppDelegate.m in Sources */,
-				E3F1CCA815739D5D00B09295 /* FirstViewController.m in Sources */,
-				E3F1CCAF15739D5D00B09295 /* SecondViewController.m in Sources */,
+				E3F1CCA815739D5D00B09295 /* DemoViewController.m in Sources */,
+				E3F1CCAF15739D5D00B09295 /* StarViewController.m in Sources */,
 				E3DC962A15744B8500C3B308 /* SALetterLabel.m in Sources */,
 				E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */,
 			);
@@ -241,20 +241,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		E3F1CCB415739D5D00B09295 /* FirstViewController.xib */ = {
+		E3F1CCB415739D5D00B09295 /* DemoViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E3F1CCB515739D5D00B09295 /* en */,
 			);
-			name = FirstViewController.xib;
+			name = DemoViewController.xib;
 			sourceTree = "<group>";
 		};
-		E3F1CCB715739D5D00B09295 /* SecondViewController.xib */ = {
+		E3F1CCB715739D5D00B09295 /* StarViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E3F1CCB815739D5D00B09295 /* en */,
 			);
-			name = SecondViewController.xib;
+			name = StarViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
