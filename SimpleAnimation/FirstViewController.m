@@ -17,12 +17,19 @@
 
 #pragma mark - Properties
 
-@property (strong, nonatomic) IBOutlet SALetterLabel *startingA;
+@property (strong, nonatomic) IBOutlet SALetterLabel *firstLetter;      // The leftmost letter on the screen.  Important because it is sometimes treated differently from the other letters.
 
-@property (strong, nonatomic) IBOutletCollection(SALetterLabel) NSArray *letters;
+@property (strong, nonatomic) IBOutletCollection(SALetterLabel) NSArray *letters;   // All of the letter views on the screen, including the firstLetter.
 
-@property (strong, nonatomic) NSMutableArray *containerViews;
-@property (strong, nonatomic) NSMutableArray *cardBacks;
+@property (strong, nonatomic) UIColor *blueColor;                       // Used for color change animation
+@property (strong, nonatomic) UIColor *pinkColor;                       // Used for color change animation
+
+@property (strong, nonatomic) NSMutableArray *containerViews;           // Container views which serve as a context for the view transition demos
+@property (strong, nonatomic) NSMutableArray *flipsides;                // Views which are exchanged with letter views for the view transition demos
+
+@property (weak, nonatomic) IBOutlet UIButton *replayButton;            // Allows the user to restart the animation demo once it has completed
+
+@property (strong, nonatomic) NSMutableArray *taskQueue;                // Holds a list of selectors to be executed in sequence. Selectors are stored as strings
 
 @end
 
@@ -46,19 +53,28 @@
 
 #pragma mark - View Lifecycle Routines
 
+//  viewDidLoad is used for code that should be executed once when the letter views are loaded from the nib file, but not again after that.
+//  This method stores the "home" center information for all of our letter views.  This indicates where the views should be placed when they're in their default state.
+//  It also sets some layer properties so our views will look like playing cards
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Store the view, frame, and center information for all of our letter views.
-    
-    for (SALetterLabel *label in self.letters)
+    for (SALetterLabel *letter in self.letters)
     {
-        label.homeCenter = label.center;
-        label.homeRect = label.frame;
+        letter.homeCenter = letter.center;
+    
+        letter.layer.borderColor = [[UIColor blackColor] CGColor];
+        letter.layer.borderWidth = 3.0;
+        letter.layer.cornerRadius = 15.0;
     }
 }
 
+//  viewWillAppear: is used for operations that should be done every time that the view is about to appear onscreen.
+//  An animation from a previous appearance of the screen might have left the views in an altered state, so this setup should be done every time the view is about to appear.
+//  At the end of this method, hideLettersBehindFirstLetter is called to to prepare for the first animation demo.
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -66,218 +82,171 @@
     
     for (SALetterLabel *letter in self.letters)
     {
-        letter.layer.borderColor = [[UIColor blackColor] CGColor];
-        letter.layer.borderWidth = 3.0;
-        letter.layer.cornerRadius = 15.0;
-        
         letter.backgroundColor = [UIColor whiteColor];
         letter.alpha = 1;
     }
     
-    //  Now let's do some special setup for our first animation
-    
-    [self hideAllLettersBehindA];
+    self.replayButton.alpha = 0;
 }
 
+//  viewDidAppear: is used for operations that should be done as soon as the view appears onscreen. This will be called the first time that a user goes to a screen.  However, it will not be called if the app goes into the background and then is made active again.
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-    // Let's start with a simple animation that will move all of the letters to their home position.
-    
-    [UIView animateWithDuration:2.0
-                     animations:^
-     {
-         [self moveLetterViewsToHomePositions];
-     }
-     completion:^(BOOL finished)
-     {
-         // Now, in the completion block, we'll "deal" them out one by one, like cards.
-         
-         [self dealLettersOneByOne];
-         
-         // Finally, after that's done, we'll change their colors, one-by-one
-         
-         [self performSelector:@selector(changeColorsOneByOne)
-                    withObject:nil
-                    afterDelay:7];
-         
-         
-         [self performSelector:@selector(demoViewTransitions)
-                    withObject:nil
-                    afterDelay:12];
-     }];
+    [self showAllAnimations:nil];
 }
 
-
-#pragma mark - Unanimated view changes
-
-//  The methods in this section have no animation included in them per se, but they can be animated if they are enclosed in an animation block when they are called.
-
-//  The following routine "hides" all of the letter views behind the first "A" in animation.  This will be helpful for a couple of the animations we are going to do.  
-
--(void)hideAllLettersBehindA
-{
-    for (SALetterLabel *label in self.letters)
-    {
-        label.center = self.startingA.homeCenter;
-    }
-}
-
-//  This routine sets the alpha of all of the views except for the first letter to zero.  There are three ways to make a view invisible:
-//  1)  Set its alpha to zero.  This is alway animatable.
-//  2)  Set its hidden property to true.  This is never animatable.
-//  3)  Set its background color to [UIColor clearColor].  This may or may not be animatable depending on the type of view you're dealing with.  It usually will not hide your entire view - just the background.  
-
-- (void)hideAllButA
-{
-    for (SALetterLabel *letter in self.letters)
-    {
-        letter.alpha = (letter == self.startingA);
-    }
-}
-
-//  The following routine "moves" a single letter view to its normal "home" position.
-
-//  Note that when we move a view around, the preferred way to move it is to change its center.  You should only change its frame if you a resizing the view.  
-
--(void)moveLetterViewToHomePosition:(SALetterLabel *)whichLetter
-{
-    whichLetter.center = whichLetter.homeCenter;
-}
-
-
-//  The following routine "moves" all of the letter views to their normal "home" positions.
-
--(void)moveLetterViewsToHomePositions
-{
-    for (SALetterLabel *thisLabel in self.letters)
-    {
-        thisLabel.center = thisLabel.homeCenter;
-    }
-}
 
 #pragma mark - Simple View Animations
 
--(void)colorLetter:(SALetterLabel *)whichLetter
+//  The following routine "moves" a single letter view to its normal "home" position.
+//  Note that when we move a view around, the preferred way to move it is to change its center.  You should only change its frame if you a resizing the view.
+
+-(void)moveLetterViewsToHomePositionsAnimated
 {
-    //  Uh oh!  We have a problem.  The background colors of UILabels are not animatable.  So we're going to create another view, put it behind our label view, and animate its colors!
-    
-    //  First let's make our letter view transparent, so we'll be able to see the new view behind it.
-    
-        whichLetter.backgroundColor = [UIColor clearColor];
-    
-    //  Next let's create the backing view that we'll use for the color transitions.
-    
-    UIView *tempView = [[UIView alloc] initWithFrame:whichLetter.frame];
-    
-    tempView.backgroundColor = [UIColor clearColor];
-    tempView.layer.cornerRadius = whichLetter.layer.cornerRadius;
-    
-    //  Note that we're not just using addSubview:.  insertSubview: belowSubview: allows us to put the view behind the view we want it to provide the background for.  If we just used addSubview:, the new view would be drawn in front of the existing view.
-    
-    [whichLetter.superview insertSubview:tempView
-                                   belowSubview:whichLetter];
-    
-    //  Now the fun - let's start changing colors!  We're going to user several nested animations with completion blocks.  In each completion block we'll start the animation to the next color.  
-    
-    //  The final animation block will take the backing view's alpha to 0.  In its completion block, we'll remove the backing view from its superview.   
-    
-    [UIView animateWithDuration:1.0 animations:^
-    {
-         tempView.backgroundColor = [UIColor colorWithRed:0/255.0
-                                                    green:100/255.0 
-                                                     blue:155/255.0 
-                                                    alpha:1.0];
-    }
-    completion:^(BOOL finished)
+    [UIView animateWithDuration:2.0 animations:^
      {
-         // This animation is enclosed in a completion block, so it will start when the previous animation finishes.
-         
-         [UIView animateWithDuration:1.0 animations:^
-          {
-              tempView.backgroundColor = [UIColor colorWithRed:255/255.0
-                                                         green:111/255.0 
-                                                          blue:207/255.0 
-                                                         alpha:0.6];
-          }
-          completion:^(BOOL finished)
-          {
-              // Here we have the completion block for the second animation.  It's easy to nest blocks like this.
-              
-              [UIView animateWithDuration:1.0 animations:^
-               {
-                   tempView.alpha = 0;
-               }
-                               completion:^(BOOL finished)
-               {
-                   [tempView removeFromSuperview];
-               }];
-          }];
+         for (SALetterLabel *letter in self.letters)
+         {
+             letter.center = letter.homeCenter;
+         }
+     }
+     completion:^(BOOL finished)
+     {
+         [self queuedTaskEnded:finished];
      }];
 }
 
-//  Here's one way of applying a method to each view.  We can use performSelector:withObject:afterDelay: to call a method at a particular time in the future. 
+//  This routine sets the alpha of all of the views except for the first letter to zero.  There are three ways to make a view invisible:
+//  1)  Set its alpha to zero.  This is always animatable.
+//  2)  Set its hidden property to true.  This is never animatable.
+//  3)  Set its background color to [UIColor clearColor].  This may or may not be animatable depending on the type of view you're dealing with.  It usually will not hide your entire view - just the background.
 
-//  In this example, we're executing a method on each letter after a little bit of a delay.  
+-(void)hideLettersAnimated
+{
+    [UIView animateWithDuration:1.0
+                     animations:^
+     {
+         for (SALetterLabel *letter in self.letters)
+         {
+             if (letter == self.firstLetter)
+             {
+                 letter.alpha = 1.0;
+             }
+             else
+             {
+                 letter.alpha = 0.0;
+             }
+         }
+     }
+     completion:^(BOOL finished)
+     {
+         for (SALetterLabel *label in self.letters)
+         {
+             label.center = self.firstLetter.homeCenter;
+             label.alpha = 1.0;
+         }
+         
+         [self queuedTaskEnded:finished];
+     }];
+}
 
--(void)applyActionToEachLetterInTurn:(SEL)selector 
-                 delayBetweenLetters:(NSTimeInterval)delayBetweenLetters 
+
+-(void)moveLettersOneByOneAnimated
 {
     NSInteger letterCounter = 0;
+    __block NSInteger completionCount = 0;
     
-    for (SALetterLabel *letter in self.letters)
+    for (SALetterLabel *letter in [self.letters reverseObjectEnumerator])
     {
-        [self performSelector:selector
-                   withObject:letter
-                   afterDelay:delayBetweenLetters * letterCounter];
+        letter.alpha = 1;
+        
+        [UIView animateWithDuration:0.5
+                              delay:letterCounter * 0.5
+                            options:UIViewAnimationOptionCurveLinear
+                         animations:^
+         {
+             letter.center = letter.homeCenter;
+         }
+                         completion:^(BOOL finished)
+         {
+             completionCount++;
+             
+             if (completionCount == [self.letters count])
+             {
+                 [self queuedTaskEnded:finished];
+             }
+         }];
         
         letterCounter++;
     }
 }
 
-//  Here's the master routine for changing the colors one by one.  Note that we use the applyActionToEachLetterInTurn:delayBetweenLetters: method that we just defined.  
+
+//  Here's the master routine for changing the colors one by one.
+//  The background colors of UILabels are not animatable.  So we're going to create another view, put it behind our label view, and animate its colors.
+//  First make the letter view's background transparent, so you can see the new view behind it.
+//  Next let's create the backing view that we'll use for the color transitions.
+//  insertSubview: belowSubview: allows you to put the view behind the view we want it to provide the background for.  If you just used addSubview:, the new view would be drawn in front of the existing view and you wouldn't be able to see the label or its border.
+//  Now the fun - let's start changing colors!  We're going to user several nested animations with completion blocks.  In each completion block we'll start the animation to the next color.
+//  The final animation block will take the backing view's alpha to 0.  In its completion block, we'll remove the backing view from its superview.
+//  Here we have the completion block for the second animation.  It's easy to nest blocks like this.
 
 
--(void)changeColorsOneByOne
+-(void)changeLetterColorsAnimated
 {
-    [self applyActionToEachLetterInTurn:@selector(colorLetter:)     
-                    delayBetweenLetters:0.4];
-}
-
-
-//  This method illustrates another way of doing an animation to each view in turn.  In this case, since we just have one simple animation to do, we can call the animations using animationWithDuration:delay:options:animations:completion:
-
--(void)dealLettersOneByOne
-{
-    [UIView animateWithDuration:1.0
-                     animations:^
-     {
-         [self hideAllButA];
-     }
-                     completion:^(BOOL finished)
-     {
-         [self hideAllLettersBehindA];
-         
-         NSInteger letterCounter = 0;
-         
-         for (SALetterLabel *letter in [self.letters reverseObjectEnumerator])
+    NSInteger letterCounter = 0;
+    
+    for (SALetterLabel *letter in self.letters)
+    {
+        letter.backgroundColor = [UIColor clearColor];
+        
+        UIView *tempView = [[UIView alloc] initWithFrame:letter.frame];
+        
+        tempView.backgroundColor = [UIColor clearColor];
+        tempView.layer.cornerRadius = letter.layer.cornerRadius;
+        
+        
+        
+        [letter.superview insertSubview:tempView
+                                belowSubview:letter];
+        
+        [UIView animateWithDuration:1.0
+                              delay:0.4 * letterCounter
+                            options:UIViewAnimationOptionCurveLinear
+                         animations:^
          {
-            letter.alpha = 1;
-             
-            [UIView animateWithDuration:0.5
-                                   delay:letterCounter
-                                 options:UIViewAnimationOptionCurveLinear
-                              animations:^
-            {
-                [self moveLetterViewToHomePosition:letter];
-            }
-            completion:NULL];
-             
-            letterCounter++;
+             tempView.backgroundColor = [self blueColor];
          }
-     }];
+         completion:^(BOOL finished)
+         {
+             [UIView animateWithDuration:1.0 animations:^
+              {
+                  tempView.backgroundColor = [self pinkColor];
+              }
+              completion:^(BOOL finished)
+              {
+                  [UIView animateWithDuration:1.0 animations:^
+                   {
+                       tempView.alpha = 0;
+                       
+                   }
+                   completion:^(BOOL finished)
+                   {
+                       [tempView removeFromSuperview];
+                       
+                       if (letter == [self.letters lastObject])
+                       {
+                           [self queuedTaskEnded:finished];
+                       }
+                   }];
+              }];
+         }];
+
+        letterCounter++;
+    }
 }
 
 #pragma mark - View Transition Animations
@@ -286,141 +255,307 @@
 
 //  The following view illustrates four different view transitions, using nested completion blocks to start each animation after the previous one has finished.  
 
-//  Note that we're using container views.  The transition is performed on the superview of the views that we're changing.  If we don't have a container view, then for things like screen flips, the whole screen will flip.  We don't want that, so in another routine, we created a container view which is the size of the views we're transitioning and added the letter views to it as a subview.  Now when we do our transitions, they'll be done in the context of the container view, meaning that for flip transitions, only an area the size of our letter views will flip.   
+//  Note that we're using container views.  The transition is performed on the superview of the views that we're changing.  If we don't have a container view, then for things like screen flips, the whole screen will flip.  We don't want that, so in another routine, we created a container view which is the size of the views we're transitioning and added the letter views to it as a subview.  Now when we do our transitions, they'll be done in the context of the container view, meaning that for flip transitions, only an area the size of our letter views will flip.
 
--(void)transitionWithContainer:(UIView *)containerView
-                           labelView:(UILabel *)fromView
-                            cardBack:(UIImageView *)cardBack
+-(void)demoViewTransition:(UIViewAnimationOptions)options
 {
-        
-    [UIView transitionWithView:containerView 
-                      duration:2.5
-                       options:UIViewAnimationOptionTransitionFlipFromLeft 
-                    animations:^
-     {
-         [fromView removeFromSuperview];
-         [containerView addSubview:cardBack];
-     }
-    completion:^(BOOL finished)
-     {
-         [UIView transitionWithView:containerView 
-                           duration:2.5
-                            options:UIViewAnimationOptionTransitionCurlUp 
-                         animations:^
-          {
-              [cardBack removeFromSuperview];
-              [containerView addSubview:fromView];
-          }
-          completion:^(BOOL finished)
-          {
-              [UIView transitionWithView:containerView 
-                                duration:2.5
-                                 options:UIViewAnimationOptionTransitionFlipFromBottom 
-                              animations:^
-               {
-                   [fromView removeFromSuperview];
-                   [containerView addSubview:cardBack];
-               }
-               completion:^(BOOL finished)
-               {
-                   [UIView transitionWithView:containerView 
-                                     duration:5
-                                      options:UIViewAnimationOptionTransitionCrossDissolve 
-                                   animations:^
-                    {
-                        [cardBack removeFromSuperview];
-                        [containerView addSubview:fromView];
-                    }
-                    completion:^(BOOL finished)
-                    {
-                        fromView.frame = containerView.frame;
-                        [self.view addSubview:fromView];
-                        [containerView removeFromSuperview];
-                    }];
-               }];
-          }];
-     }];
-}
-
-// The following method calls the transitionWithContainer... method for each of our letters.
-
--(void)executeTransitions
-{
-    UIView *containerView;
-    UILabel *fromView;
-    UIImageView *cardBack;
-    
-    for (int i = 0; i < [[self letters] count]; i++)
+    for (int i = 0; i < [self.letters count]; i++)
     {
-    
-        containerView = self.containerViews[i];
-        fromView = self.letters[i];
-        cardBack = self.cardBacks[i];
+        UIView *containerView = self.containerViews[i];
+        UIView *letterView = self.letters[i];
         
-        [self transitionWithContainer:containerView 
-                                  labelView:fromView 
-                                   cardBack:cardBack];
-    
+        UIView *fromView;
+        UIView *toView;
+        
+        if (letterView.superview)
+        {
+            fromView = letterView;
+            toView = self.flipsides[i];
+        }
+        else
+        {
+            fromView = self.flipsides[i];
+            toView = letterView;
+        }
+        
+        [UIView transitionWithView:containerView
+                          duration:2.5
+                           options:options
+                        animations:^
+         {
+             [fromView removeFromSuperview];
+             [containerView addSubview:toView];
+         }
+         completion:^(BOOL finished)
+         {
+             if (containerView == self.containerViews.lastObject) {
+                 
+                if (!finished)
+                {
+                    [self tearDownAfterViewTransitionDemo];
+                }
+                 
+                [self queuedTaskEnded:finished];
+             }
+         }];
     }
 }
 
-//  The following method sets up the appropriate container views and "card backs" in order to do our view transitions.  
 
--(void)demoViewTransitions
+-(void)demoViewTransitionFlipFromLeft
 {
+    [self demoViewTransition:UIViewAnimationOptionTransitionFlipFromLeft];
+}
 
-    // Create an array of container views
-    
-    UIView *tempView;
-    
+
+-(void)demoViewTransitionCurlUp
+{
+    [self demoViewTransition:UIViewAnimationOptionTransitionCurlUp];
+}
+
+
+-(void)demoViewTransitionFlipFromBottom
+{
+    [self demoViewTransition:UIViewAnimationOptionTransitionFlipFromBottom];
+}
+
+
+-(void)demoViewTransitionCrossDissolve
+{
+    [self demoViewTransition:UIViewAnimationOptionTransitionCrossDissolve];
+}
+
+
+// The following method sets up the appropriate container views and "flipside views" in order to do our view transitions.
+// Set the letter view's background color to white
+// Create container view to supply the context in which the transition will occur
+// Create an "flipside views" which animations will transition from and to
+
+-(void)setupForViewTransitionDemo
+{
     self.containerViews = [NSMutableArray array];
     
-    for (SALetterLabel *eachLetter in self.letters)
+    self.flipsides = [NSMutableArray new];
+    
+    for (SALetterLabel *letter in self.letters)
     {
-        eachLetter.backgroundColor = [UIColor whiteColor];
+        letter.backgroundColor = [UIColor whiteColor];
         
-        tempView = [[UIView alloc] initWithFrame:eachLetter.frame];
+        UIView *containerView = [[UIView alloc] initWithFrame:letter.frame];
         
-        tempView.backgroundColor = [UIColor whiteColor];
+        containerView.backgroundColor = [UIColor whiteColor];
         
-        [self.containerViews addObject:tempView];
+        [self.containerViews addObject:containerView];
         
-        [self.view addSubview:tempView];
+        [self.view addSubview:containerView];
         
-        CGRect tempRect = eachLetter.frame;
-        tempRect.origin = CGPointMake(0,0);
+        CGRect tempRect = letter.frame;
+        tempRect.origin = CGPointZero;
         
-        eachLetter.frame = tempRect;
+        letter.frame = tempRect;
         
-        [tempView addSubview:eachLetter];
+        [containerView addSubview:letter];
+        
+        UIView *flipside = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GoldStar.png"]];
+        
+        flipside.contentMode = UIViewContentModeScaleAspectFit;
+        
+        flipside.frame = letter.frame;
+        
+        flipside.backgroundColor = [UIColor whiteColor];
+        flipside.layer.cornerRadius = letter.layer.cornerRadius;
+        flipside.layer.borderWidth = letter.layer.borderWidth;
+        flipside.layer.borderColor = letter.layer.borderColor;
+        
+        [self.flipsides addObject:flipside];
     }
     
-    
-    // Create an array of "card backs"
-    
-    self.cardBacks = [NSMutableArray new];
-    
-    for (SALetterLabel *eachLetter in self.letters)
-    {
-        eachLetter.backgroundColor = [UIColor whiteColor];
-        
-        tempView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GoldStar.png"]];
-        
-        tempView.contentMode = UIViewContentModeScaleAspectFit;
-        
-        tempView.frame = eachLetter.frame;
-        
-        tempView.backgroundColor = [UIColor whiteColor];
-        tempView.layer.cornerRadius = eachLetter.layer.cornerRadius;
-        tempView.layer.borderWidth = eachLetter.layer.borderWidth;
-        tempView.layer.borderColor = eachLetter.layer.borderColor;
-        
-        [self.cardBacks addObject:tempView];
-    }
-    
-    [self performSelector:@selector(executeTransitions) withObject:nil afterDelay:1.0];
-     
+    [self queuedTaskEnded:YES];
 }
 
+// Dispose of flipside views
+
+-(void)tearDownAfterViewTransitionDemo
+{
+    for (UIView *eachView in self.flipsides)
+    {
+        if (eachView.superview)
+        {
+            [eachView removeFromSuperview];
+        }
+    }
+    
+    self.flipsides = nil;
+    
+    if (self.containerViews)
+    {
+        for (NSInteger i = [self.containerViews count] - 1; i >= 0 ; --i)
+        {
+            UIView *letter = self.letters[i];
+            UIView *containerView = self.containerViews[i];
+            
+            letter.frame = containerView.frame;
+            
+            [self.view addSubview:letter];
+            [containerView removeFromSuperview];
+        }
+        
+        self.containerViews = nil;
+    }
+    
+    [self queuedTaskEnded:YES];
+}
+
+#pragma mark - Animation Coordination Routines
+
+-(IBAction)showAllAnimations:(id)sender
+{
+    [self addSelectorToTaskQueue:@selector(hideReplayButton)];
+    
+    [self addSelectorToTaskQueue:@selector(hideLettersAnimated)];
+    
+    [self addSelectorToTaskQueue:@selector(moveLetterViewsToHomePositionsAnimated)];
+    
+    [self addSelectorToTaskQueue:@selector(hideLettersAnimated)];
+    
+    [self addSelectorToTaskQueue:@selector(moveLettersOneByOneAnimated)];
+    
+    [self addSelectorToTaskQueue:@selector(changeLetterColorsAnimated)];
+    
+    [self addSelectorToTaskQueue:@selector(setupForViewTransitionDemo)];
+    
+    [self addSelectorToTaskQueue:@selector(demoViewTransitionFlipFromLeft)];
+    
+    [self addSelectorToTaskQueue:@selector(demoViewTransitionCurlUp)];
+    
+    [self addSelectorToTaskQueue:@selector(demoViewTransitionFlipFromBottom)];
+    
+    [self addSelectorToTaskQueue:@selector(demoViewTransitionCrossDissolve)];
+    
+    [self addSelectorToTaskQueue:@selector(tearDownAfterViewTransitionDemo)];
+    
+    [self addSelectorToTaskQueue:@selector(showReplayButton)];
+    
+    [self runNextQueuedTask];
+}
+
+
+-(void)runNextQueuedTask
+{
+    if (!self.taskQueue)
+    {
+        NSLog(@"All done. No tasks to run.");
+    }
+    else if ([self.taskQueue count] == 0)
+    {
+        NSLog(@"All done. The task queue exists but is empty");
+        self.taskQueue = nil;
+    }
+    else
+    {
+        NSString *selectorString = self.taskQueue[0];
+        SEL selector = NSSelectorFromString(selectorString);
+        
+        [self.taskQueue removeObjectAtIndex:0];
+        
+        if ([self.taskQueue count] == 0)
+        {
+            self.taskQueue = nil;
+        }
+        
+        NSLog(@"Starting task: %@", selectorString);
+        
+        [self performSelector:selector
+                   withObject:nil
+                   afterDelay:0];
+    }
+}
+
+-(void)addSelectorToTaskQueue:(SEL)selector
+{
+    if (!self.taskQueue)
+    {
+        self.taskQueue = [NSMutableArray new];
+    }
+    
+    [self.taskQueue addObject:NSStringFromSelector(selector)];
+}
+
+//  If a task didn't complete, empty the task queue so that we can start from scratch next time.  Animations might not complete if the app went into the background or if another screen became active.
+//  If the task did complete, start the next task (if any).
+
+-(void)queuedTaskEnded:(BOOL)completed
+{
+
+    if (!completed)
+    {
+        self.taskQueue = nil;
+        
+        NSLog(@"Animation did not complete.");
+        
+        [self showReplayButton];
+    }
+    else
+    {
+        [self runNextQueuedTask];
+    }
+}
+
+-(void)showReplayButton
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        self.replayButton.alpha = 1.0;
+    }
+    completion:^(BOOL finished)
+    {
+        
+        [self queuedTaskEnded:finished];
+                         
+    }];
+}
+
+-(void)hideReplayButton
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.replayButton.alpha = 0.0;
+    }
+    completion:^(BOOL finished)
+    {
+                         
+        [self queuedTaskEnded:finished];
+                         
+    }];
+}
+
+
+#pragma mark - Custom Getters
+
+-(UIColor *)blueColor
+{
+    if (!_blueColor)
+    {
+        _blueColor = [UIColor colorWithRed:0/255.0
+                                     green:100/255.0
+                                      blue:155/255.0
+                                     alpha:1.0];
+    }
+    
+    return _blueColor;
+}
+
+-(UIColor *)pinkColor
+{
+    if (!_pinkColor)
+    {
+        _pinkColor = [UIColor colorWithRed:255/255.0
+                                     green:111/255.0
+                                      blue:207/255.0
+                                     alpha:0.6];
+    }
+    
+    return _pinkColor;
+}
 
 @end

@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstViewController">
             <connections>
-                <outlet property="startingA" destination="8" id="19"/>
+                <outlet property="firstLetter" destination="8" id="LJN-Ec-Hp4"/>
+                <outlet property="replayButton" destination="a0B-GJ-Zt1" id="D7i-KS-KO7"/>
                 <outlet property="view" destination="2" id="7"/>
                 <outletCollection property="letters" destination="8" id="20"/>
                 <outletCollection property="letters" destination="13" id="21"/>
@@ -86,6 +87,16 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a0B-GJ-Zt1">
+                    <rect key="frame" x="488" y="369" width="48" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Replay">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="showAllAnimations:" destination="-1" eventType="touchUpInside" id="gFg-DM-FHs"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

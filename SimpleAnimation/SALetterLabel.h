@@ -12,6 +12,5 @@
 @interface SALetterLabel : UILabel
 
 @property CGPoint homeCenter;
-@property CGRect homeRect;
 
 @end

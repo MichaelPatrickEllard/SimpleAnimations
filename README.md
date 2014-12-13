@@ -1,5 +1,5 @@
-SimpleAnimations
-================
+Mike Ellard's Simple Animations
+===============================
 
 This project demonstrates some simple animation techniques for iOS.  
 
@@ -42,9 +42,12 @@ Version 1.2 Updates (July 28, 2012)
 -	Wrote some additional comments for the Star Animations screen.
 -	Added descriptive labels to the Star screen and the Problems screen to help viewers understand the animations on each screen
 
-Version 2.0 Updates (December 11, 2014)
+Version 2.0 Updates (Work-in-Progress, December 2014)
 
 -	Modernization of Objective-C code
 -	Removed speedSetting static variable from project files.  This variable was never really used, and taking it out makes the code a little simpler.
 -	Removed the "Flip Too Little" example from the Problem Animations screen.  This animation demonstrated a problem that occurred in earlier versions of Xcode if some similarly named UIKit enumerations were used incorrectly.  Modern versions of Xcode flag this problem with a warning.  
 -	Converted "About this Project.rtf" to "README.md"
+-   Simplified SALetterLabel class and made it a child of UILabel
+-   Complete re-write of FirstViewController.  Broke up some longer methods and eliminated some submethods so that each of the eight animation demos is done by a concise, self-contained method.
+-   Added "Replay" button FirstViewController screen
