@@ -49,5 +49,6 @@ Version 2.0 Updates (Work-in-Progress, December 2014)
 -	Removed the "Flip Too Little" example from the Problem Animations screen.  This animation demonstrated a problem that occurred in earlier versions of Xcode if some similarly named UIKit enumerations were used incorrectly.  Modern versions of Xcode flag this problem with a warning.  
 -	Converted "About this Project.rtf" to "README.md"
 -   Simplified SALetterLabel class and made it a child of UILabel
--   Complete re-write of FirstViewController.  Broke up some longer methods and eliminated some submethods so that each of the eight animation demos is done by a concise, self-contained method.
--   Added "Replay" button FirstViewController screen
+-   Complete re-write of FirstViewController.  Broke up some longer methods and eliminated some sub-methods so that each of the eight animation demos is done by a concise method which is responsible only for that animation demo.
+-   Upgraded documentation of FirstViewController screen
+-   Added "Replay" button to FirstViewController screen

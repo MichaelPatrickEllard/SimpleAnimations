@@ -8,6 +8,23 @@
 //  This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 
+/*  This screen demonstrates eight animations in sequence.  The first four animations are animations of UIView properties.  The next four animations are view transition animations, which animate the act of replacing an existing subview with a new one.  The animations shown are:
+
+      1)  Hiding letters by setting their alpha to zero
+      2)  Moving letters in an animated way, with all animations beginning and ending at the same time
+      3)  Moving letters in an animated way, with each animation beginning and ending at a different time
+      4)  Animating changes in the background color of a view
+      5)  Doing a "flip from left" view transition from one view to another
+      6)  Doing a "curl up" view transition from one view to another
+      7)  Doing a "flip from bottom" view transition from one view to another
+      8)  Doing a "cross disolve" view transition from one view to another
+ 
+    Each animation is done using a separate method. In a few cases, sub-methods are used in order to keep the code clear and concise.
+ 
+    The animation methods are managed using a very simple task queue created as part of this class.  */
+
+
+
 #import "FirstViewController.h"
 
 #import "SALetterLabel.h"
@@ -39,6 +56,8 @@
 
 #pragma mark - Initializer
 
+//  The only custom behavior in our initializer is setting the title and icon for this screens tab in the tab bar controller.  Everything else is inherited from superclasses.
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,7 +74,7 @@
 
 //  viewDidLoad is used for code that should be executed once when the letter views are loaded from the nib file, but not again after that.
 //  This method stores the "home" center information for all of our letter views.  This indicates where the views should be placed when they're in their default state.
-//  It also sets some layer properties so our views will look like playing cards
+//  It also sets some layer properties so our views will look like playing cards.
 
 
 - (void)viewDidLoad
@@ -72,9 +91,8 @@
     }
 }
 
-//  viewWillAppear: is used for operations that should be done every time that the view is about to appear onscreen.
-//  An animation from a previous appearance of the screen might have left the views in an altered state, so this setup should be done every time the view is about to appear.
-//  At the end of this method, hideLettersBehindFirstLetter is called to to prepare for the first animation demo.
+//  viewWillAppear: is used for operations that should be done every time that the view controller's main view is about to appear onscreen.
+//  An animation from a previous appearance of the screen might have left the views in an altered state, so this setup should be done every time the main view is about to appear.
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -89,7 +107,7 @@
     self.replayButton.alpha = 0;
 }
 
-//  viewDidAppear: is used for operations that should be done as soon as the view appears onscreen. This will be called the first time that a user goes to a screen.  However, it will not be called if the app goes into the background and then is made active again.
+//  viewDidAppear: is used for operations that should be done as soon as the view appears onscreen. This will be called the first time that a user goes to a screen.  However, it will not be called if the app goes into the background and then is made active again. This screen uses viewDidAppear: to run the showAllAnimations: method as soon as the view appears on screen.
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -101,8 +119,9 @@
 
 #pragma mark - Simple View Animations
 
-//  The following routine "moves" a single letter view to its normal "home" position.
-//  Note that when we move a view around, the preferred way to move it is to change its center.  You should only change its frame if you a resizing the view.
+//  The following routine moves all views to their "home" positions, which were set in viewDidLoad.
+//  To move a view around, change its center.  You should only change a view's frame if you are resizing the view.
+//  Note the completion block, which can be used for housekeeping or to set up another animation.  This method, like all of the other animation methods for this class, calls queueTaskEnded: when it is done.
 
 -(void)moveLetterViewsToHomePositionsAnimated
 {
@@ -119,10 +138,12 @@
      }];
 }
 
-//  This routine sets the alpha of all of the views except for the first letter to zero.  There are three ways to make a view invisible:
-//  1)  Set its alpha to zero.  This is always animatable.
-//  2)  Set its hidden property to true.  This is never animatable.
-//  3)  Set its background color to [UIColor clearColor].  This may or may not be animatable depending on the type of view you're dealing with.  It usually will not hide your entire view - just the background.
+//  This routine sets the alpha of all of the views except for the first letter to zero.
+//  There are three ways to make a view invisible:
+//      1)  Set its alpha to zero.  This is always animatable.
+//      2)  Set its hidden property to true.  This is never animatable.
+//      3)  Set its background color to [UIColor clearColor].  This may or may not be animatable depending on the type of view you're dealing with.  It usually will not hide your entire view - just the background.
+//  Note the completion block.  After animating the transition from an alpha of 1.0 to an alpha of 0.0, the views are moved behind the first letter and their alpha is restored to 1.0.  Since the firstLetter view is the last-added subview, it is drawn last and effectively hides all of the views that are behind it.
 
 -(void)hideLettersAnimated
 {
@@ -152,6 +173,9 @@
          [self queuedTaskEnded:finished];
      }];
 }
+
+//  This method is very similar to moveLetterViewsToHomePositionsAnimated, except that instead of moving the letters all at once, it moves them one-by-one.
+//  Previous methods have used UIView's animationWithDuration:animation:completion:.  This method uses UIView's animationWithDuration:delay:options:animation:completion:, which allows us to specify a delay before the animation should be run.  By specifying a different delay for each letter, we can move them one-by-one.
 
 
 -(void)moveLettersOneByOneAnimated
@@ -185,15 +209,9 @@
 }
 
 
-//  Here's the master routine for changing the colors one by one.
-//  The background colors of UILabels are not animatable.  So we're going to create another view, put it behind our label view, and animate its colors.
-//  First make the letter view's background transparent, so you can see the new view behind it.
-//  Next let's create the backing view that we'll use for the color transitions.
-//  insertSubview: belowSubview: allows you to put the view behind the view we want it to provide the background for.  If you just used addSubview:, the new view would be drawn in front of the existing view and you wouldn't be able to see the label or its border.
-//  Now the fun - let's start changing colors!  We're going to user several nested animations with completion blocks.  In each completion block we'll start the animation to the next color.
-//  The final animation block will take the backing view's alpha to 0.  In its completion block, we'll remove the backing view from its superview.
-//  Here we have the completion block for the second animation.  It's easy to nest blocks like this.
-
+//  The following method rotates the background colors of our letters from white to blue to pink and then back to white again.
+//  The background colors of UILabels are not animatable.  So this routine changes the letter views' backgrounds to ClearColor, creates a backing view for each letter, puts the backing view behind each letter view, and animates the colors on the backing view.
+//  Note that this method nests calls to UIView animateWithDuration: in the completion block for previous animations.
 
 -(void)changeLetterColorsAnimated
 {
@@ -220,20 +238,20 @@
          {
              tempView.backgroundColor = [self blueColor];
          }
-         completion:^(BOOL finished)
+         completion:^(BOOL finished)                            //  Completion block
          {
              [UIView animateWithDuration:1.0 animations:^
               {
                   tempView.backgroundColor = [self pinkColor];
               }
-              completion:^(BOOL finished)
+              completion:^(BOOL finished)                       //  Start of first nested completion block
               {
                   [UIView animateWithDuration:1.0 animations:^
                    {
                        tempView.alpha = 0;
                        
                    }
-                   completion:^(BOOL finished)
+                   completion:^(BOOL finished)                  //  Start of second nested completion block
                    {
                        [tempView removeFromSuperview];
                        
@@ -251,11 +269,13 @@
 
 #pragma mark - View Transition Animations
 
-//  Up until now, all of our animations have used [UIView animate...] calls.  Here's a different way of doing animations... using the [UIView transitionWithView...] method.
-
-//  The following view illustrates four different view transitions, using nested completion blocks to start each animation after the previous one has finished.  
-
-//  Note that we're using container views.  The transition is performed on the superview of the views that we're changing.  If we don't have a container view, then for things like screen flips, the whole screen will flip.  We don't want that, so in another routine, we created a container view which is the size of the views we're transitioning and added the letter views to it as a subview.  Now when we do our transitions, they'll be done in the context of the container view, meaning that for flip transitions, only an area the size of our letter views will flip.
+//  All of the previous animations methods have used variations on UIView's animateWithDuration: methods.  The next four animations use a different approach - they use UIView transitionWithView... methods.  The transitionWithView:... methods involve three views:
+//
+//      A)  A container view.  This view isn't animated per se, but it provides the context in which the animation should occur.  See the flip animations on the ProblemAnimations screen for an example of what can happen if the container view isn't set up appropriately.
+//      B)  A "from view" this is a current subview of the container view which is going to be removed as a subview of the container view.
+//      C)  A "to view" this is a view which is going to be added as subview of the container view in place of the "from view."
+//
+//  While the view transition animations appear very different to the user, the code used to produce them is almost exactly the same.  For this reason, a single demoViewTransition: submethod is used to perform all four different view transition animations.  The only difference between the four is the UIViewAnimationOptions passed to each view.
 
 -(void)demoViewTransition:(UIViewAnimationOptions)options
 {
@@ -327,9 +347,6 @@
 
 
 // The following method sets up the appropriate container views and "flipside views" in order to do our view transitions.
-// Set the letter view's background color to white
-// Create container view to supply the context in which the transition will occur
-// Create an "flipside views" which animations will transition from and to
 
 -(void)setupForViewTransitionDemo
 {
@@ -373,7 +390,7 @@
     [self queuedTaskEnded:YES];
 }
 
-// Dispose of flipside views
+// This method removes any leftover container views and flipside views from the view transition demos.
 
 -(void)tearDownAfterViewTransitionDemo
 {
@@ -406,7 +423,9 @@
     [self queuedTaskEnded:YES];
 }
 
-#pragma mark - Animation Coordination Routines
+#pragma mark - Task Queue
+
+//  The methods in this section implement a simple task queue which is used to execute the desired animations in sequence, along with some other necessary maintenance tasks.  
 
 -(IBAction)showAllAnimations:(id)sender
 {
@@ -500,6 +519,8 @@
         [self runNextQueuedTask];
     }
 }
+
+#pragma mark - Replay Button
 
 -(void)showReplayButton
 {
