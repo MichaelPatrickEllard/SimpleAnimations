@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */; };
 		E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */ = {isa = PBXBuildFile; fileRef = E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */; };
+		E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */; };
+		E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */; };
+		E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */; };
+		E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */; };
 		E3DC962A15744B8500C3B308 /* SALetterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC962915744B8500C3B308 /* SALetterLabel.m */; };
 		E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9415739D5D00B09295 /* UIKit.framework */; };
 		E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9615739D5D00B09295 /* Foundation.framework */; };
@@ -17,11 +21,7 @@
 		E3F1CCA115739D5D00B09295 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA015739D5D00B09295 /* main.m */; };
 		E3F1CCA515739D5D00B09295 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA415739D5D00B09295 /* AppDelegate.m */; };
 		E3F1CCA815739D5D00B09295 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCA715739D5D00B09295 /* DemoViewController.m */; };
-		E3F1CCAA15739D5D00B09295 /* DemoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCA915739D5D00B09295 /* DemoIcon.png */; };
-		E3F1CCAC15739D5D00B09295 /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCAB15739D5D00B09295 /* DemoIcon@2x.png */; };
 		E3F1CCAF15739D5D00B09295 /* StarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3F1CCAE15739D5D00B09295 /* StarViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		E3F1CCB115739D5D00B09295 /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB015739D5D00B09295 /* StarIcon.png */; };
-		E3F1CCB315739D5D00B09295 /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB215739D5D00B09295 /* StarIcon@2x.png */; };
 		E3F1CCB615739D5D00B09295 /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB415739D5D00B09295 /* DemoViewController.xib */; };
 		E3F1CCB915739D5D00B09295 /* StarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB715739D5D00B09295 /* StarViewController.xib */; };
 		E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC01573A1A700B09295 /* GoldStar.png */; };
@@ -33,6 +33,10 @@
 		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
 		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
 		E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemAnimations.xib; sourceTree = "<group>"; };
+		E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoIcon.png; sourceTree = "<group>"; };
+		E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DemoIcon@2x.png"; sourceTree = "<group>"; };
+		E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
+		E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
 		E3D0D4F71A3A46CB00C11B8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3DC962815744B8500C3B308 /* SALetterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SALetterLabel.h; sourceTree = "<group>"; };
 		E3DC962915744B8500C3B308 /* SALetterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SALetterLabel.m; sourceTree = "<group>"; };
@@ -48,12 +52,8 @@
 		E3F1CCA415739D5D00B09295 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E3F1CCA615739D5D00B09295 /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		E3F1CCA715739D5D00B09295 /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
-		E3F1CCA915739D5D00B09295 /* DemoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoIcon.png; sourceTree = "<group>"; };
-		E3F1CCAB15739D5D00B09295 /* DemoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DemoIcon@2x.png"; sourceTree = "<group>"; };
 		E3F1CCAD15739D5D00B09295 /* StarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StarViewController.h; sourceTree = "<group>"; };
 		E3F1CCAE15739D5D00B09295 /* StarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StarViewController.m; sourceTree = "<group>"; };
-		E3F1CCB015739D5D00B09295 /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
-		E3F1CCB215739D5D00B09295 /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
 		E3F1CCB515739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DemoViewController.xib; sourceTree = "<group>"; };
 		E3F1CCB815739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StarViewController.xib; sourceTree = "<group>"; };
 		E3F1CCC01573A1A700B09295 /* GoldStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoldStar.png; sourceTree = "<group>"; };
@@ -108,7 +108,6 @@
 		E3F1CC9A15739D5D00B09295 /* SimpleAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				E3F1CCBF1573A1A700B09295 /* Graphics */,
 				E3F1CCA315739D5D00B09295 /* AppDelegate.h */,
 				E3F1CCA415739D5D00B09295 /* AppDelegate.m */,
 				E3F1CCA615739D5D00B09295 /* DemoViewController.h */,
@@ -116,16 +115,13 @@
 				E3F1CCB415739D5D00B09295 /* DemoViewController.xib */,
 				E3DC962815744B8500C3B308 /* SALetterLabel.h */,
 				E3DC962915744B8500C3B308 /* SALetterLabel.m */,
-				E3F1CCA915739D5D00B09295 /* DemoIcon.png */,
-				E3F1CCAB15739D5D00B09295 /* DemoIcon@2x.png */,
 				E3F1CCAD15739D5D00B09295 /* StarViewController.h */,
 				E3F1CCAE15739D5D00B09295 /* StarViewController.m */,
 				E3F1CCB715739D5D00B09295 /* StarViewController.xib */,
-				E3F1CCB015739D5D00B09295 /* StarIcon.png */,
-				E3F1CCB215739D5D00B09295 /* StarIcon@2x.png */,
 				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
 				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
 				E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */,
+				E3F1CCBF1573A1A700B09295 /* Graphics */,
 				E3F1CC9B15739D5D00B09295 /* Supporting Files */,
 			);
 			path = SimpleAnimation;
@@ -145,6 +141,10 @@
 		E3F1CCBF1573A1A700B09295 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */,
+				E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */,
+				E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */,
+				E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */,
 				E3F1CCC01573A1A700B09295 /* GoldStar.png */,
 				E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */,
 			);
@@ -202,14 +202,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */,
-				E3F1CCAA15739D5D00B09295 /* DemoIcon.png in Resources */,
-				E3F1CCAC15739D5D00B09295 /* DemoIcon@2x.png in Resources */,
-				E3F1CCB115739D5D00B09295 /* StarIcon.png in Resources */,
-				E3F1CCB315739D5D00B09295 /* StarIcon@2x.png in Resources */,
 				E3F1CCB615739D5D00B09295 /* DemoViewController.xib in Resources */,
+				E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */,
+				E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */,
 				E3F1CCB915739D5D00B09295 /* StarViewController.xib in Resources */,
 				E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */,
 				E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */,
+				E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */,
+				E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */,
 				E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
