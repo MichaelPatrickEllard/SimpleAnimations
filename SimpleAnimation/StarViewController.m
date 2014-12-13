@@ -16,6 +16,7 @@
 @interface StarViewController ()
 
 @property (strong, nonatomic) IBOutlet UIImageView *starImage;
+@property NSInteger spinCounter;
 
 @end
 
@@ -167,8 +168,6 @@
 
 -(IBAction)spinStarAnimated:(id)sender
 {
-    static NSInteger animationCounter = 0;
-    
     [UIView animateWithDuration:1.0
                           delay:0
                         options:UIViewAnimationOptionCurveLinear
@@ -178,9 +177,9 @@
     }
     completion:^(BOOL finished)
     {
-        animationCounter ++;
+        self.spinCounter++;
         
-        animationCounter == 8 ? animationCounter = 0 : [self spinStarAnimated:nil];
+        self.spinCounter == 8 ? self.spinCounter = 0 : [self spinStarAnimated:nil];
     }];
 }
 
