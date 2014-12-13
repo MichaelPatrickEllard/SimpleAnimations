@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SALetterLabel : UILabel
+@interface CardView : UILabel
 
 @property CGPoint homeCenter;
 

@@ -22,7 +22,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.tabBarController = [UITabBarController new];
-    self.tabBarController.viewControllers = @[[StarViewController new], [DemoViewController new], [ProblemAnimations new]];
+    self.tabBarController.viewControllers = @[[StarViewController new], [CardViewController new], [ProblemAnimations new]];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
