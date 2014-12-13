@@ -34,6 +34,7 @@ Version 2.0 Updates (Work-in-Progress, December 2014)
 -   Complete re-write of DemoViewController.  Broke up some longer methods and eliminated some sub-methods so that each of the eight animation demos is done by a concise method which is responsible only for that animation demo.
 -   Upgraded documentation of DemoViewController screen
 -   Added "Replay" button to DemoViewController screen
+-   Reordered screens in tab bar controller so that Star comes first, followed by Demo, followed by Problems. This follows a logical progression where the simplest screen is first, and more complex screens come later.
 
 Version 1.2 Updates (July 28, 2012)
 

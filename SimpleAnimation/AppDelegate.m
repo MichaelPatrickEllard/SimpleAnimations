@@ -21,13 +21,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIViewController *viewController1 = [DemoViewController new];
-    UIViewController *viewController2 = [StarViewController new];
-    
-    UIViewController *viewController3 = [ProblemAnimations new];
-    
     self.tabBarController = [UITabBarController new];
-    self.tabBarController.viewControllers = @[viewController1, viewController2, viewController3];
+    self.tabBarController.viewControllers = @[[StarViewController new], [DemoViewController new], [ProblemAnimations new]];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
