@@ -108,19 +108,19 @@
 		E3F1CC9A15739D5D00B09295 /* SimpleAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				E3F1CCA315739D5D00B09295 /* AppDelegate.h */,
-				E3F1CCA415739D5D00B09295 /* AppDelegate.m */,
-				E3F1CCA615739D5D00B09295 /* DemoViewController.h */,
-				E3F1CCA715739D5D00B09295 /* DemoViewController.m */,
-				E3F1CCB415739D5D00B09295 /* DemoViewController.xib */,
-				E3DC962815744B8500C3B308 /* DemoLetterLabel.h */,
-				E3DC962915744B8500C3B308 /* DemoLetterLabel.m */,
 				E3F1CCAD15739D5D00B09295 /* StarViewController.h */,
 				E3F1CCAE15739D5D00B09295 /* StarViewController.m */,
 				E3F1CCB715739D5D00B09295 /* StarViewController.xib */,
+				E3DC962815744B8500C3B308 /* DemoLetterLabel.h */,
+				E3DC962915744B8500C3B308 /* DemoLetterLabel.m */,
+				E3F1CCA615739D5D00B09295 /* DemoViewController.h */,
+				E3F1CCA715739D5D00B09295 /* DemoViewController.m */,
+				E3F1CCB415739D5D00B09295 /* DemoViewController.xib */,
 				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
 				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
 				E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */,
+				E3F1CCA315739D5D00B09295 /* AppDelegate.h */,
+				E3F1CCA415739D5D00B09295 /* AppDelegate.m */,
 				E3F1CCBF1573A1A700B09295 /* Graphics */,
 				E3F1CC9B15739D5D00B09295 /* Supporting Files */,
 			);
