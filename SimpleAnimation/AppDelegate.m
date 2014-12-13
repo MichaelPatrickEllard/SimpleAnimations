@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
+#import "DemoViewController.h"
 
-#import "SecondViewController.h"
+#import "StarViewController.h"
 
 #import "ProblemAnimations.h"
 
@@ -21,8 +21,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIViewController *viewController1 = [FirstViewController new];
-    UIViewController *viewController2 = [SecondViewController new];
+    UIViewController *viewController1 = [DemoViewController new];
+    UIViewController *viewController2 = [StarViewController new];
     
     UIViewController *viewController3 = [ProblemAnimations new];
     

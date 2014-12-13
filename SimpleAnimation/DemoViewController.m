@@ -25,12 +25,12 @@
 
 
 
-#import "FirstViewController.h"
+#import "DemoViewController.h"
 
 #import "SALetterLabel.h"
 
 
-@interface FirstViewController ()
+@interface DemoViewController ()
 
 #pragma mark - Properties
 
@@ -51,7 +51,7 @@
 @end
 
 
-@implementation FirstViewController
+@implementation DemoViewController
 
 
 #pragma mark - Initializer
@@ -63,8 +63,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        self.title = NSLocalizedString(@"First", @"First");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        self.title = NSLocalizedString(@"Demo", @"Demo");
+        self.tabBarItem.image = [UIImage imageNamed:@"DemoIcon"];
     }
     return self;
 }

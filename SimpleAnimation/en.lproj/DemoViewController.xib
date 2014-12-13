@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DemoViewController">
             <connections>
                 <outlet property="firstLetter" destination="8" id="LJN-Ec-Hp4"/>
                 <outlet property="replayButton" destination="a0B-GJ-Zt1" id="D7i-KS-KO7"/>
@@ -80,8 +80,8 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please read the comments in FirstViewController.m for information about how the animations on this screen are done." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="27">
-                    <rect key="frame" x="20" y="658" width="894" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please read the comments in DemoViewController.m for information about how the animations on this screen are done." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="27">
+                    <rect key="frame" x="20" y="658" width="911" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
