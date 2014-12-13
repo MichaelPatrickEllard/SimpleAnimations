@@ -56,7 +56,7 @@
 
 #pragma mark - Initializer
 
-//  The only custom behavior in our initializer is setting the title and icon for this screens tab in the tab bar controller.  Everything else is inherited from superclasses.
+//  The only custom behavior in our initializer is setting the title and icon for this screen's tab in the tab bar controller.  Everything else is inherited from superclasses.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,7 +72,7 @@
 
 #pragma mark - View Lifecycle Routines
 
-//  viewDidLoad is used for code that should be executed once when the letter views are loaded from the nib file, but not again after that.
+//  viewDidLoad is used for code that should be executed once when the main view and its subviews are loaded from the nib file, but not again after that.
 //  This method stores the "home" center information for all of our letter views.  This indicates where the views should be placed when they're in their default state.
 //  It also sets some layer properties so our views will look like playing cards.
 
