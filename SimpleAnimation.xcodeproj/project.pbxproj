@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E3559E831EA968A200745448 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3559E821EA968A200745448 /* CardView.swift */; };
 		E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */; };
 		E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */ = {isa = PBXBuildFile; fileRef = E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */; };
 		E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BCC7651EA9626200B726F0 /* AppDelegate.swift */; };
@@ -14,7 +15,6 @@
 		E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */; };
 		E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */; };
 		E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */; };
-		E3DC962A15744B8500C3B308 /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3DC962915744B8500C3B308 /* CardView.m */; };
 		E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9415739D5D00B09295 /* UIKit.framework */; };
 		E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9615739D5D00B09295 /* Foundation.framework */; };
 		E3F1CC9915739D5D00B09295 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */; };
@@ -29,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E3559E821EA968A200745448 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
 		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
 		E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemAnimations.xib; sourceTree = "<group>"; };
@@ -39,8 +40,6 @@
 		E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
 		E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
 		E3D0D4F71A3A46CB00C11B8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E3DC962815744B8500C3B308 /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
-		E3DC962915744B8500C3B308 /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F1CC9415739D5D00B09295 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E3F1CC9615739D5D00B09295 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -112,8 +111,7 @@
 				E3F1CCA615739D5D00B09295 /* CardViewController.h */,
 				E3F1CCA715739D5D00B09295 /* CardViewController.m */,
 				E3F1CCB415739D5D00B09295 /* CardViewController.xib */,
-				E3DC962815744B8500C3B308 /* CardView.h */,
-				E3DC962915744B8500C3B308 /* CardView.m */,
+				E3559E821EA968A200745448 /* CardView.swift */,
 				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
 				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
 				E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */,
@@ -226,7 +224,7 @@
 				E3F1CCA815739D5D00B09295 /* CardViewController.m in Sources */,
 				E3F1CCAF15739D5D00B09295 /* StarViewController.m in Sources */,
 				E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */,
-				E3DC962A15744B8500C3B308 /* CardView.m in Sources */,
+				E3559E831EA968A200745448 /* CardView.swift in Sources */,
 				E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +339,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleAnimation/SimpleAnimation-Prefix.pch";
 				INFOPLIST_FILE = "SimpleAnimation/SimpleAnimation-Info.plist";
@@ -358,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleAnimation/SimpleAnimation-Prefix.pch";
 				INFOPLIST_FILE = "SimpleAnimation/SimpleAnimation-Info.plist";

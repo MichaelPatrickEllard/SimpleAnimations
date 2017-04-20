@@ -23,6 +23,7 @@ This work is licensed under the Creative Commons Attribution 3.0 Unported Licens
 
 Version 2.0 Updates (Work-in-Progress, December 2014)
 
+-   Project is being converted from Objective-C to Swift (in progress)
 -	Modernization of Objective-C code
 -	Removed speedSetting static variable from project files.  This variable was never really used, and taking it out makes the code a little simpler.
 -	Removed the "Flip Too Little" example from the Problem Animations screen.  This animation demonstrated a problem that occurred in earlier versions of Xcode if some similarly named UIKit enumerations were used incorrectly.  Modern versions of Xcode flag this problem with a warning.  

@@ -27,7 +27,7 @@
 
 #import "CardViewController.h"
 
-#import "CardView.h"
+#import "SimpleAnimation-Swift.h"
 
 
 @interface CardViewController ()
