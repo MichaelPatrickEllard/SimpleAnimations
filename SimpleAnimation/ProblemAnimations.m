@@ -23,7 +23,6 @@
 
 @property (strong, nonatomic) IBOutlet UIView *flipTooMuchView;
 @property (strong, nonatomic) IBOutlet UIView *flipCorrectlyView;
-@property (strong, nonatomic) IBOutlet UIView *flipCorrectlyBacking;
 
 @property (strong, nonatomic) IBOutlet UIImageView *immobileStar;
 @property (strong, nonatomic) IBOutlet UIImageView *wrongWayStar;
@@ -181,17 +180,17 @@
 
 - (IBAction)flipTooMuchPressed:(id)sender  
 {
-UIView *copiedView = [[UIView alloc] initWithFrame:self.flipTooMuchView.frame];
-copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
+    UIView *copiedView = [[UIView alloc] initWithFrame:self.flipTooMuchView.frame];
+    copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
 
-[UIView transitionFromView:self.flipTooMuchView
-                    toView:copiedView
-                  duration:1.0 
-                   options:UIViewAnimationOptionTransitionFlipFromLeft 
-                completion:^(BOOL finished)
- {
-     self.flipTooMuchView = copiedView;
- }];
+    [UIView transitionFromView:self.flipTooMuchView
+                        toView:copiedView
+                      duration:1.0 
+                       options:UIViewAnimationOptionTransitionFlipFromLeft 
+                    completion:^(BOOL finished)
+     {
+         self.flipTooMuchView = copiedView;
+     }];
 }
 
 
@@ -232,9 +231,10 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
      }];
 }
 
-// This animation kind of works, but not the way we might want.  In this case, we're doing series of rations that take the star exactly 180° - 1/2 way around the circle.  UIView looks at the beginning state and end state, and optimizes how to get from the beginning state to the end state.  Oddly enough, in doing the initial rotate, it goes counter-clockwise.  However, if you rotate it again, it will go clockwise the next time.
+//  This animation kind of works, but not the way we might want.  In this case, we're doing series of rations that take the star exactly 180° - 1/2 way around the circle.  UIView looks at the beginning state and end state, and optimizes how to get from the beginning state to the end state.
 
-//  Hypothesis: the "wrong way" rotation is caused by the fact that the math for one rotation ends up with a positive rotation, while the math for the other ends up with a negative rotation.  You're encouraged to play with this, investigate the math, and see if you can find a way to make the 1/2 rotations spins work correctly.  
+//  Under iOS 7.1 and earlier, In doing the initial rotate, it goes counter-clockwise.  However, if you rotate it again, it will go clockwise the next time.
+//  Under iOS 8.1, In doing the initial rotate, it goes +++ counter-clockwise for both odd and even rotations.
 
 - (IBAction)wrongWayRotatePressed:(id)sender 
 {
@@ -245,7 +245,7 @@ copiedView.backgroundColor = self.flipTooMuchView.backgroundColor;
     }];
 }
 
-// In this method, we're doing a series of 1/4 rotations.  This works, but the animation is jerky.  The reason that it's jerky is that the default for animations is "ease in / ease out", meaning that the animations will go slowly at the beginning and end of the animation, then more quickly in the middle.  In an animation that is really a series of animations chained together, this causes jerky updating.  
+//  In this method, we're doing a series of 1/4 rotations.  This works, but the animation is jerky.  The reason that it's jerky is that the default for the animation curve is "ease in / ease out", meaning that the animations will go slowly at the beginning and end of the animation, then more quickly in the middle.  In an animation that is really a series of animations chained together, this causes jerky updating.  The solution is to use animateWithDuration:delay:options:animations:completion: so that you can specify to use UIViewAnimationOptionCurveLinear.  If you don't specify this, the default is UIViewAnimationCurveEaseInOut)
 
 - (IBAction)jerkyRotatePressed:(id)sender 
 {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" promptedForUpgradeToXcode5="NO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -11,7 +11,6 @@
                 <outlet property="blinkStar" destination="16" id="30"/>
                 <outlet property="correctStar" destination="29" id="50"/>
                 <outlet property="fadeStar" destination="17" id="31"/>
-                <outlet property="flipCorrectlyBacking" destination="24" id="42"/>
                 <outlet property="flipCorrectlyView" destination="25" id="41"/>
                 <outlet property="flipTooMuchView" destination="21" id="38"/>
                 <outlet property="immobileStar" destination="26" id="47"/>
