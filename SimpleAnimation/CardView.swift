@@ -10,11 +10,9 @@
 
 class CardView: UILabel
 {
-    var homeCenter: CGPoint
+    var homeCenter = CGPoint.zero
     
     required init?(coder aDecoder: NSCoder) {
-        
-        homeCenter = CGPoint()  // A temporary hack until the rest of the classes are converted to Swift
         
         super.init(coder: aDecoder)
         
