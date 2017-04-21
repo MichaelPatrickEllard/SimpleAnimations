@@ -34,21 +34,7 @@ class StarViewController : UIViewController
     var spinCounter: Int = 0                 //  Used by the SpinStarAnimated: method, keeps track of how many quarter turns the star has spun
 
 
-//MARK: - Initializers
-
-//  The only custom behavior in our initializer is setting the title and icon for this screen's tab in the tab bar controller.  Everything else is inherited from superclasses.
-        
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        self.title = NSLocalizedString("Star", comment: "Star")
-        self.tabBarItem.image = UIImage(named: "StarIcon")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")  // Should be upgraded
-    }
+//MARK: - View Controller Lifecycle
     
     
     //  viewDidLoad is used for code that should be executed once when the main view and its subviews are loaded from the nib file, but not again after that.

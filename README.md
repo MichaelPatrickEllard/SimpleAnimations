@@ -13,7 +13,7 @@ The project shows three screens in a tab bar controller:
 
 The Star and Card screens were originally written for a class that I taught at UCSC's Silicon Valley Extension.  The Problems screen was written for a presentation that I did at iOS Dev Camp in 2012.   
 
-©2012, 2014 Michael Patrick Ellard
+©2012, 2014, 2017 Michael Patrick Ellard
 
 This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
@@ -21,8 +21,10 @@ This work is licensed under the Creative Commons Attribution 3.0 Unported Licens
 -----
 
 
-Version 2.0 Updates (Work-in-Progress, December 2014)
+Version 2.0 Updates (Work-in-Progress, April 2017)
 
+-   Changed the deployment target to iOS 8.0
+-   Project upgraded to use a single storyboard instead of multiple xib files
 -   Project is being converted from Objective-C to Swift (in progress)
 -	Modernization of Objective-C code
 -	Removed speedSetting static variable from project files.  This variable was never really used, and taking it out makes the code a little simpler.

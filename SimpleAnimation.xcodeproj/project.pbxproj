@@ -10,19 +10,17 @@
 		E325A5271EAA5F1100A27405 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */; };
 		E3559E831EA968A200745448 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3559E821EA968A200745448 /* CardView.swift */; };
 		E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */; };
-		E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */ = {isa = PBXBuildFile; fileRef = E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */; };
 		E3B6AB8D1EA96DA80038192D /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6AB8C1EA96DA80038192D /* CardViewController.swift */; };
 		E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BCC7651EA9626200B726F0 /* AppDelegate.swift */; };
 		E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */; };
 		E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */; };
 		E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */; };
 		E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */; };
+		E3CED83D1EAA7A9200D5F5DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */; };
 		E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9415739D5D00B09295 /* UIKit.framework */; };
 		E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9615739D5D00B09295 /* Foundation.framework */; };
 		E3F1CC9915739D5D00B09295 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */; };
 		E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */; };
-		E3F1CCB615739D5D00B09295 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB415739D5D00B09295 /* CardViewController.xib */; };
-		E3F1CCB915739D5D00B09295 /* StarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCB715739D5D00B09295 /* StarViewController.xib */; };
 		E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC01573A1A700B09295 /* GoldStar.png */; };
 		E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */; };
 		E3F1CCC51573BA3C00B09295 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */; };
@@ -32,7 +30,6 @@
 		E3559E821EA968A200745448 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
 		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
-		E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProblemAnimations.xib; sourceTree = "<group>"; };
 		E3B6AB8C1EA96DA80038192D /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		E3BCC7641EA9626200B726F0 /* SimpleAnimation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3BCC7651EA9626200B726F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +38,7 @@
 		E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DemoIcon@2x.png"; sourceTree = "<group>"; };
 		E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
 		E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
+		E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E3D0D4F71A3A46CB00C11B8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3F1CC9415739D5D00B09295 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -49,8 +47,6 @@
 		E3F1CC9C15739D5D00B09295 /* SimpleAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleAnimation-Info.plist"; sourceTree = "<group>"; };
 		E3F1CC9E15739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E3F1CCA215739D5D00B09295 /* SimpleAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Prefix.pch"; sourceTree = "<group>"; };
-		E3F1CCB515739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CardViewController.xib; sourceTree = "<group>"; };
-		E3F1CCB815739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/StarViewController.xib; sourceTree = "<group>"; };
 		E3F1CCC01573A1A700B09295 /* GoldStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoldStar.png; sourceTree = "<group>"; };
 		E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GoldStarDocumentation.pdf; sourceTree = "<group>"; };
 		E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -104,15 +100,13 @@
 			isa = PBXGroup;
 			children = (
 				E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */,
-				E3F1CCB715739D5D00B09295 /* StarViewController.xib */,
 				E3B6AB8C1EA96DA80038192D /* CardViewController.swift */,
-				E3F1CCB415739D5D00B09295 /* CardViewController.xib */,
 				E3559E821EA968A200745448 /* CardView.swift */,
 				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
 				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
-				E35D579C15BA80DB00ECD701 /* ProblemAnimations.xib */,
 				E3BCC7651EA9626200B726F0 /* AppDelegate.swift */,
 				E3BCC7641EA9626200B726F0 /* SimpleAnimation-Bridging-Header.h */,
+				E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */,
 				E3F1CCBF1573A1A700B09295 /* Graphics */,
 				E3F1CC9B15739D5D00B09295 /* Supporting Files */,
 			);
@@ -198,15 +192,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */,
-				E3F1CCB615739D5D00B09295 /* CardViewController.xib in Resources */,
 				E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */,
 				E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */,
-				E3F1CCB915739D5D00B09295 /* StarViewController.xib in Resources */,
+				E3CED83D1EAA7A9200D5F5DD /* Main.storyboard in Resources */,
 				E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */,
-				E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */,
 				E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */,
 				E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */,
-				E35D579E15BA80DB00ECD701 /* ProblemAnimations.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,22 +225,6 @@
 				E3F1CC9E15739D5D00B09295 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E3F1CCB415739D5D00B09295 /* CardViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3F1CCB515739D5D00B09295 /* en */,
-			);
-			name = CardViewController.xib;
-			sourceTree = "<group>";
-		};
-		E3F1CCB715739D5D00B09295 /* StarViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3F1CCB815739D5D00B09295 /* en */,
-			);
-			name = StarViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

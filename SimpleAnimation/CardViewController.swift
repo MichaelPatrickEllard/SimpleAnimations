@@ -47,23 +47,6 @@ class CardViewController : UIViewController
 
 
 
-//:MARK - Initializer
-
-//  The only custom behavior in our initializer is setting the title and icon for this screen's tab in the tab bar controller.  Everything else is inherited from superclasses.
-        
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-        self.title = NSLocalizedString("Cards", comment: "Cards")
-        self.tabBarItem.image = UIImage(named:"CardIcon")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")  // Will need to implement this later to convert to Storyboards
-    }
-
-
 
 //:MARK - View Lifecycle Routines
 
