@@ -10,6 +10,7 @@
 		E325A5271EAA5F1100A27405 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */; };
 		E3559E831EA968A200745448 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3559E821EA968A200745448 /* CardView.swift */; };
 		E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */; };
+		E3A1075D1EAAA0BB004F7876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A1075C1EAAA0BB004F7876 /* Assets.xcassets */; };
 		E3B6AB8D1EA96DA80038192D /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6AB8C1EA96DA80038192D /* CardViewController.swift */; };
 		E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BCC7651EA9626200B726F0 /* AppDelegate.swift */; };
 		E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */; };
@@ -29,6 +30,7 @@
 		E3559E821EA968A200745448 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
 		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
+		E3A1075C1EAAA0BB004F7876 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3B6AB8C1EA96DA80038192D /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		E3BCC7641EA9626200B726F0 /* SimpleAnimation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3BCC7651EA9626200B726F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		E3F1CC9A15739D5D00B09295 /* SimpleAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				E3A1075C1EAAA0BB004F7876 /* Assets.xcassets */,
 				E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */,
 				E3B6AB8C1EA96DA80038192D /* CardViewController.swift */,
 				E3559E821EA968A200745448 /* CardView.swift */,
@@ -196,6 +199,7 @@
 				E3CED83D1EAA7A9200D5F5DD /* Main.storyboard in Resources */,
 				E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */,
 				E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */,
+				E3A1075D1EAAA0BB004F7876 /* Assets.xcassets in Resources */,
 				E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,11 +312,13 @@
 		E3F1CCBD15739D5D00B09295 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleAnimation/SimpleAnimation-Prefix.pch";
 				INFOPLIST_FILE = "SimpleAnimation/SimpleAnimation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.ucsc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -326,11 +332,13 @@
 		E3F1CCBE15739D5D00B09295 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleAnimation/SimpleAnimation-Prefix.pch";
 				INFOPLIST_FILE = "SimpleAnimation/SimpleAnimation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.ucsc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
