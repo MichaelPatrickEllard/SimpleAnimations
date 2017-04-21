@@ -17,5 +17,9 @@ class CardView: UILabel
         homeCenter = CGPoint()  // A temporary hack until the rest of the classes are converted to Swift
         
         super.init(coder: aDecoder)
+        
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 3.0
+        self.layer.cornerRadius = 15.0
     }
 }

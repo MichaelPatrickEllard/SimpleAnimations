@@ -79,12 +79,7 @@ class CardViewController : UIViewController
         for card in self.cards
         {
             card.homeCenter = card.center
-            
-            card.layer.borderColor = UIColor.black.cgColor
-            card.layer.borderWidth = 3.0
-            card.layer.cornerRadius = 15.0
         }
-
     }
     
     
