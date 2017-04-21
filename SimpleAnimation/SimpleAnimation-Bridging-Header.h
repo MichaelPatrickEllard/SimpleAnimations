@@ -4,8 +4,6 @@
 
 @import UIKit;
 
-#import "CardViewController.h"
-
 #import "StarViewController.h"
 
 #import "ProblemAnimations.h"
