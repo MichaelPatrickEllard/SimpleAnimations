@@ -4,6 +4,4 @@
 
 @import UIKit;
 
-#import "StarViewController.h"
-
 #import "ProblemAnimations.h"
