@@ -98,7 +98,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cards" id="RJe-aQ-5pC"/>
+                    <tabBarItem key="tabBarItem" title="Cards" image="TabIconCard" id="RJe-aQ-5pC"/>
                     <connections>
                         <outlet property="firstCard" destination="BXQ-sd-HZQ" id="fHM-CX-sgg"/>
                         <outlet property="replayButton" destination="Dmg-EZ-5Jb" id="eC5-Db-Q6u"/>
@@ -189,7 +189,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tGF-5g-h2D">
-                                <rect key="frame" x="574" y="48" width="408" height="61"/>
+                                <rect key="frame" x="574" y="48" width="408" height="20.5"/>
                                 <string key="text">You can start animations on an object at any time.  You don't have to wait until an animation has finished in order to start a new animation on that object.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -205,7 +205,7 @@
                             <constraint firstItem="tGF-5g-h2D" firstAttribute="leading" secondItem="OzB-T2-77T" secondAttribute="leadingMargin" constant="554" id="vEt-aM-uX2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Star" image="StarIcon.png" id="chB-2Z-4lz"/>
+                    <tabBarItem key="tabBarItem" title="Star" image="TabIconStar" id="chB-2Z-4lz"/>
                     <connections>
                         <outlet property="starImage" destination="WY4-9i-vWU" id="Hhw-hL-hSl"/>
                     </connections>
@@ -405,7 +405,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Problems" id="1mK-aA-Puy"/>
+                    <tabBarItem key="tabBarItem" title="Problems" image="TabIconProblem" id="1mK-aA-Puy"/>
                     <connections>
                         <outlet property="blinkHelperView" destination="ypC-OW-cLz" id="Atg-B8-VB5"/>
                         <outlet property="blinkStar" destination="dvQ-Oq-h1W" id="jw1-MI-Wzl"/>
@@ -447,6 +447,8 @@
     </scenes>
     <resources>
         <image name="GoldStar.png" width="1000" height="1000"/>
-        <image name="StarIcon.png" width="30" height="30"/>
+        <image name="TabIconCard" width="30" height="30"/>
+        <image name="TabIconProblem" width="30" height="30"/>
+        <image name="TabIconStar" width="30" height="30"/>
     </resources>
 </document>

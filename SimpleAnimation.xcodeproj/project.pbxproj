@@ -13,10 +13,6 @@
 		E3A1075D1EAAA0BB004F7876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A1075C1EAAA0BB004F7876 /* Assets.xcassets */; };
 		E3B6AB8D1EA96DA80038192D /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6AB8C1EA96DA80038192D /* CardViewController.swift */; };
 		E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BCC7651EA9626200B726F0 /* AppDelegate.swift */; };
-		E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */; };
-		E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */; };
-		E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */; };
-		E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */; };
 		E3CED83D1EAA7A9200D5F5DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */; };
 		E3F1CC9515739D5D00B09295 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9415739D5D00B09295 /* UIKit.framework */; };
 		E3F1CC9715739D5D00B09295 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9615739D5D00B09295 /* Foundation.framework */; };
@@ -35,10 +31,6 @@
 		E3BCC7641EA9626200B726F0 /* SimpleAnimation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3BCC7651EA9626200B726F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
-		E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DemoIcon.png; sourceTree = "<group>"; };
-		E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DemoIcon@2x.png"; sourceTree = "<group>"; };
-		E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarIcon.png; sourceTree = "<group>"; };
-		E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarIcon@2x.png"; sourceTree = "<group>"; };
 		E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E3D0D4F71A3A46CB00C11B8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E3F1CC9015739D5D00B09295 /* SimpleAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,10 +120,6 @@
 		E3F1CCBF1573A1A700B09295 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				E3BEE46B1A3C9E7F00D77A1E /* DemoIcon.png */,
-				E3BEE46C1A3C9E7F00D77A1E /* DemoIcon@2x.png */,
-				E3BEE46D1A3C9E7F00D77A1E /* StarIcon.png */,
-				E3BEE46E1A3C9E7F00D77A1E /* StarIcon@2x.png */,
 				E3F1CCC01573A1A700B09295 /* GoldStar.png */,
 				E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */,
 			);
@@ -194,13 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */,
-				E3BEE4701A3C9E7F00D77A1E /* DemoIcon@2x.png in Resources */,
-				E3BEE4721A3C9E7F00D77A1E /* StarIcon@2x.png in Resources */,
 				E3CED83D1EAA7A9200D5F5DD /* Main.storyboard in Resources */,
 				E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */,
-				E3BEE46F1A3C9E7F00D77A1E /* DemoIcon.png in Resources */,
 				E3A1075D1EAAA0BB004F7876 /* Assets.xcassets in Resources */,
-				E3BEE4711A3C9E7F00D77A1E /* StarIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
