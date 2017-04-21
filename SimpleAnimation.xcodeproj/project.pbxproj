@@ -22,7 +22,6 @@
 		E3F1CC9915739D5D00B09295 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */; };
 		E3F1CC9F15739D5D00B09295 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */; };
 		E3F1CCC21573A1A700B09295 /* GoldStar.png in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC01573A1A700B09295 /* GoldStar.png */; };
-		E3F1CCC31573A1A700B09295 /* GoldStarDocumentation.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */; };
 		E3F1CCC51573BA3C00B09295 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
