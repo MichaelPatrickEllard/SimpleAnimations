@@ -24,6 +24,7 @@
  
  The animation methods are managed using a very simple task queue created as part of this class.  */
 
+import UIKit
 
 class CardViewController : UIViewController
 {

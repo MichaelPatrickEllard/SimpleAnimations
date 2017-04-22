@@ -217,7 +217,7 @@
         <!--Problems-->
         <scene sceneID="qnX-jC-54V">
             <objects>
-                <viewController id="Zk5-nL-pGK" customClass="ProblemAnimations" sceneMemberID="viewController">
+                <viewController id="Zk5-nL-pGK" customClass="ProblemAnimations" customModule="SimpleAnimation" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="o7q-e9-Skj"/>
                         <viewControllerLayoutGuide type="bottom" id="oRu-4Z-R5z"/>
@@ -233,8 +233,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="blinkTapped:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="lR0-Ca-krP"/>
-                                    <action selector="doNotFadeTapped:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="ntk-dC-2PR"/>
+                                    <action selector="blinkTapped" destination="Zk5-nL-pGK" eventType="touchUpInside" id="Uqa-so-8SN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPL-og-sDe">
@@ -244,7 +243,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="fadeTapped:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="1yY-6V-i08"/>
+                                    <action selector="fadeTapped" destination="Zk5-nL-pGK" eventType="touchUpInside" id="7PZ-PA-XGl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpM-ev-2lF">
@@ -254,7 +253,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipTooMuchPressed:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="vZT-9Q-vLl"/>
+                                    <action selector="flipTooMuchPressed" destination="Zk5-nL-pGK" eventType="touchUpInside" id="roL-JB-mRl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jei-l6-twh">
@@ -264,27 +263,27 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCorrectlyPressed:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="dKf-k6-Ogf"/>
+                                    <action selector="flipCorrectlyPressed" destination="Zk5-nL-pGK" eventType="touchUpInside" id="fOq-gL-wpW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMi-mx-fYF">
-                                <rect key="frame" x="776" y="281" width="155" height="30"/>
+                                <rect key="frame" x="777" y="469" width="155" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Single Color Transition">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="dontRotateColors:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="7LI-f9-Dff"/>
+                                    <action selector="singleColorTransition" destination="Zk5-nL-pGK" eventType="touchUpInside" id="yGe-Pe-N3J"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F6F-Ck-eFO">
-                                <rect key="frame" x="599" y="279" width="136" height="37"/>
+                                <rect key="frame" x="600" y="466" width="136" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Rotate Colors">
+                                <state key="normal" title="Color Transitions">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="rotateColors:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="L7n-N7-Ipg"/>
+                                    <action selector="rainbowColorTransition" destination="Zk5-nL-pGK" eventType="touchUpInside" id="8VP-X7-jZv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvd-dx-7Ev">
@@ -294,7 +293,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="doNotRotatePressed:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="YRa-WL-CJL"/>
+                                    <action selector="doNotRotatePressed" destination="Zk5-nL-pGK" eventType="touchUpInside" id="uuB-yC-WfO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCM-im-NCB">
@@ -304,7 +303,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="wrongWayRotatePressed:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="xBf-ue-p76"/>
+                                    <action selector="wrongWayRotatePressed" destination="Zk5-nL-pGK" eventType="touchUpInside" id="5am-PA-jTr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-wv-UPT">
@@ -314,7 +313,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="jerkyRotatePressed:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="6Pp-qi-XKq"/>
+                                    <action selector="jerkyRotatePressed" destination="Zk5-nL-pGK" eventType="touchUpInside" id="cAs-9E-P1V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddu-F2-d3x">
@@ -324,7 +323,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="correctRotatePressed:" destination="Zk5-nL-pGK" eventType="touchUpInside" id="c8c-Km-e5K"/>
+                                    <action selector="correctRotatePressed" destination="Zk5-nL-pGK" eventType="touchUpInside" id="Veo-mm-vOx"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="GoldStar.png" translatesAutoresizingMaskIntoConstraints="NO" id="dvQ-Oq-h1W">
@@ -337,6 +336,9 @@
                                 <state key="normal" title="Flicker">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="doNotFadeTapped" destination="Zk5-nL-pGK" eventType="touchUpInside" id="m0x-UE-Ywd"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="GoldStar.png" translatesAutoresizingMaskIntoConstraints="NO" id="yQK-q0-QnV">
                                 <rect key="frame" x="198" y="123" width="128" height="128"/>
@@ -362,18 +364,13 @@
                                 <rect key="frame" x="27" y="123" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RjZ-ZK-coo">
-                                <rect key="frame" x="810" y="157" width="87" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LKN-9p-c7T">
                                 <rect key="frame" x="223" y="349" width="87" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.65351277370000005" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hFv-Uk-rco">
-                                <rect key="frame" x="624" y="157" width="87" height="87"/>
+                                <rect key="frame" x="625" y="349" width="87" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -402,6 +399,11 @@
                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RjZ-ZK-coo">
+                                <rect key="frame" x="811" y="349" width="87" height="87"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

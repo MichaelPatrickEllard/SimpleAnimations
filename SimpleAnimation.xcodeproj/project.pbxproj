@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E325A5271EAA5F1100A27405 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */; };
 		E3559E831EA968A200745448 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3559E821EA968A200745448 /* CardView.swift */; };
-		E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */; };
+		E37EA05A1EAAD41F00E1D8B2 /* ProblemAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E37EA0591EAAD41F00E1D8B2 /* ProblemAnimations.swift */; };
 		E3A1075D1EAAA0BB004F7876 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A1075C1EAAA0BB004F7876 /* Assets.xcassets */; };
 		E3B6AB8D1EA96DA80038192D /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B6AB8C1EA96DA80038192D /* CardViewController.swift */; };
 		E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BCC7651EA9626200B726F0 /* AppDelegate.swift */; };
@@ -24,11 +24,9 @@
 
 /* Begin PBXFileReference section */
 		E3559E821EA968A200745448 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemAnimations.h; sourceTree = "<group>"; };
-		E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemAnimations.m; sourceTree = "<group>"; };
+		E37EA0591EAAD41F00E1D8B2 /* ProblemAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProblemAnimations.swift; sourceTree = "<group>"; };
 		E3A1075C1EAAA0BB004F7876 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3B6AB8C1EA96DA80038192D /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		E3BCC7641EA9626200B726F0 /* SimpleAnimation-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Bridging-Header.h"; sourceTree = "<group>"; };
 		E3BCC7651EA9626200B726F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
 		E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -39,7 +37,6 @@
 		E3F1CC9815739D5D00B09295 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E3F1CC9C15739D5D00B09295 /* SimpleAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpleAnimation-Info.plist"; sourceTree = "<group>"; };
 		E3F1CC9E15739D5D00B09295 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E3F1CCA215739D5D00B09295 /* SimpleAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleAnimation-Prefix.pch"; sourceTree = "<group>"; };
 		E3F1CCC01573A1A700B09295 /* GoldStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoldStar.png; sourceTree = "<group>"; };
 		E3F1CCC11573A1A700B09295 /* GoldStarDocumentation.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = GoldStarDocumentation.pdf; sourceTree = "<group>"; };
 		E3F1CCC41573BA3C00B09295 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -96,10 +93,8 @@
 				E3BEC2431EA9987C00D3ECD7 /* StarViewController.swift */,
 				E3B6AB8C1EA96DA80038192D /* CardViewController.swift */,
 				E3559E821EA968A200745448 /* CardView.swift */,
-				E35D579A15BA80DB00ECD701 /* ProblemAnimations.h */,
-				E35D579B15BA80DB00ECD701 /* ProblemAnimations.m */,
+				E37EA0591EAAD41F00E1D8B2 /* ProblemAnimations.swift */,
 				E3BCC7651EA9626200B726F0 /* AppDelegate.swift */,
-				E3BCC7641EA9626200B726F0 /* SimpleAnimation-Bridging-Header.h */,
 				E3CED83C1EAA7A9200D5F5DD /* Main.storyboard */,
 				E3F1CCBF1573A1A700B09295 /* Graphics */,
 				E3F1CC9B15739D5D00B09295 /* Supporting Files */,
@@ -112,7 +107,6 @@
 			children = (
 				E3F1CC9C15739D5D00B09295 /* SimpleAnimation-Info.plist */,
 				E3F1CC9D15739D5D00B09295 /* InfoPlist.strings */,
-				E3F1CCA215739D5D00B09295 /* SimpleAnimation-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -197,9 +191,9 @@
 			files = (
 				E3B6AB8D1EA96DA80038192D /* CardViewController.swift in Sources */,
 				E3BCC7661EA9626200B726F0 /* AppDelegate.swift in Sources */,
+				E37EA05A1EAAD41F00E1D8B2 /* ProblemAnimations.swift in Sources */,
 				E3559E831EA968A200745448 /* CardView.swift in Sources */,
 				E325A5271EAA5F1100A27405 /* StarViewController.swift in Sources */,
-				E35D579D15BA80DB00ECD701 /* ProblemAnimations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +300,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.ucsc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SimpleAnimation/SimpleAnimation-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
@@ -326,7 +321,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.ucsc.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SimpleAnimation/SimpleAnimation-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};

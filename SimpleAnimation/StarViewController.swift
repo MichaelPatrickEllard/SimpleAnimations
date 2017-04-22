@@ -25,7 +25,7 @@
 //  A final thing to note: some of these animations are more expensive than others.  In particular, the twinkle animation is very expensive.  If you start a twinkle animation at the same time that other animations are running, performance will become noticeably bad.
 
 
-
+import UIKit
 
 
 class StarViewController : UIViewController

@@ -5,13 +5,13 @@ This project demonstrates some iOS animations.  The animations here are teaching
 
 The project shows three screens in a tab bar controller:
 
--	The first screen (Star) is a set of very simple animations that users can control via use of buttons. 
+-	The Star screen is a set of very simple animations that users can control via use of buttons. 
 
--	The second screen (Cards) is a general demonstration of a variety of iOS animations, along with commented code that explains each technique.
+-	The Cards screen is a general demonstration of a variety of iOS animations, along with commented code that explains each technique.
 
--	The third screen (Problems) illustrates some problems that I or my students have encountered while doing animations, and the comments in the code explain why some animations work while others don't.  In each case, there is a demonstration of a working animation, along with one or more variants of the same animation that don't work as desired.  
+-	The Problems screen illustrates some problems that I or my students have encountered while doing animations. In each case, there is a demonstration of a working animation, along with one or more variants of the same animation that don't work as desired.  
 
-The Star and Card screens were originally written for a class that I taught at UCSC's Silicon Valley Extension.  The Problems screen was written for a presentation that I did at iOS Dev Camp in 2012.   
+The Star and Card screens were originally written for a class that I taught at UCSC's Silicon Valley Extension.  
 
 ©2012, 2014, 2017 Michael Patrick Ellard
 
@@ -25,7 +25,7 @@ Version 2.0 Updates (Work-in-Progress, April 2017)
 
 -   Changed the deployment target to iOS 8.0
 -   Project upgraded to use a single storyboard instead of multiple xib files
--   Project is being converted from Objective-C to Swift (in progress)
+-   Project has been converted from Objective-C to Swift
 -	Modernization of Objective-C code
 -	Removed speedSetting static variable from project files.  This variable was never really used, and taking it out makes the code a little simpler.
 -	Removed the "Flip Too Little" example from the Problem Animations screen.  This animation demonstrated a problem that occurred in earlier versions of Xcode if some similarly named UIKit enumerations were used incorrectly.  Modern versions of Xcode flag this problem with a warning.  

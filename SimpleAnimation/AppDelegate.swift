@@ -6,7 +6,9 @@
 //
 //
 
-@UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate, UITabBarControllerDelegate
+import UIKit
+
+@UIApplicationMain class AppDelegate : UIResponder, UIApplicationDelegate
 {
     var window: UIWindow?
 }
