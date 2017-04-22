@@ -29,32 +29,37 @@ import UIKit
 class CardViewController : UIViewController
 {
 
-//MARK: Properties
+    //MARK: Properties
 
-    @IBOutlet var firstCard: CardView!                                                      // The leftmost card on the screen.  Important because it is sometimes treated differently from the other cards.
-
-    @IBOutlet var cards: [CardView]!                                                        // All of the card views on the screen, including the firstCard.
+    /// The leftmost card on the screen.  Important because it is sometimes treated differently from the other cards.
+    @IBOutlet var firstCard: CardView!
     
-    let blueColor = UIColor(colorLiteralRed: 0, green: 100/255, blue: 155/255, alpha: 1)    // Used for color change animation
+    /// All of the card views on the screen, including the firstCard.
+    @IBOutlet var cards: [CardView]!
     
-    let pinkColor = UIColor(colorLiteralRed: 1, green: 111/255, blue: 207/255, alpha: 0.6)  // Used for color change animation
-
-    var containerViews = [UIView]()                                                         // Container views which serve as a context for the view transition demos
-    var flipsides = [UIView]()                                                               // Views which are exchanged with card views for the view transition demos
+    /// Used for color change animation
+    let blueColor = UIColor(colorLiteralRed: 0, green: 100/255, blue: 155/255, alpha: 1)
     
-    @IBOutlet var replayButton: UIButton!                                                   // Allows the user to restart the animation demo once it has completed
+    /// Used for color change animation
+    let pinkColor = UIColor(colorLiteralRed: 1, green: 111/255, blue: 207/255, alpha: 0.6)
+
+    /// Container views which serve as a context for the view transition demos
+    var containerViews = [UIView]()
     
-    var animations = [() -> ()]()                                                           // Holds an array of animation closures to be executed in sequence.
+    /// Views which are exchanged with card views for the view transition demos
+    var flipsides = [UIView]()
+    
+    /// Allows the user to restart the animation demo once it has completed
+    @IBOutlet var replayButton: UIButton!
+    
+    /// Holds an array of closures to be executed in sequence.
+    var tasks = [() -> ()]()
+    
 
+    //MARK: -  View Lifecycle Routines
 
-
-
-//:MARK - View Lifecycle Routines
-
-//  viewDidLoad is used for code that should be executed once when the main view and its subviews are loaded from the nib file, but not again after that.
-//  This method stores the "home" center information for all of our card views.  This indicates where the views should be placed when they're in their default state.
-//  It also sets some layer properties so our views will look like playing cards.
-
+    /// `viewDidLoad` is used for code that should be executed once when the main view and its subviews are loaded from the storyboard, but not again after that.
+    /// This method stores the "home" center information for all of our card views. This indicates the default position for the views.
 
     override func viewDidLoad() {
         
@@ -67,8 +72,8 @@ class CardViewController : UIViewController
     }
     
     
-//  viewWillAppear: is used for operations that should be done every time that the view controller's main view is about to appear onscreen.
-//  An animation from a previous appearance of the screen might have left the views in an altered state, so this setup should be done every time the main view is about to appear.
+    //  `viewWillAppear` is used for operations that should be done every time that the view controller's main view is about to appear onscreen.
+    //  An animation from a previous appearance of the screen might have left the views in an altered state, so this setup should be done every time the main view is about to appear.
 
     override func viewWillAppear(_ animated: Bool) {
         
@@ -84,51 +89,54 @@ class CardViewController : UIViewController
     }
     
     
-//  viewDidAppear: is used for operations that should be done as soon as the view appears onscreen. This will be called the first time that a user goes to a screen.  However, it will not be called if the app goes into the background and then is made active again. This screen uses viewDidAppear: to run the showAllAnimations: method as soon as the view appears on screen.
+    /// `viewDidAppear` is used for operations that should be done as soon as the view appears onscreen. This will be called the first time that a user goes to a screen.  However, it will not be called if the app goes into the background and then is made active again. This screen uses `viewDidAppear` to run the `showAllAnimations` method as soon as the view has appeared on screen.
 
 
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
         
-        self.showAllAnimations(sender: self)
+        self.showAllAnimations()
     }
 
 
-//:MARK - Simple View Animations
+    //MARK: - Simple View Animations
 
-//  The following routine moves all views to their "home" positions, which were set in viewDidLoad.
-//  To move a view around, change its center.  You should only change a view's frame if you are resizing the view.
-//  Note the completion block, which can be used for housekeeping or to set up another animation.  This method, like all of the other animation methods for this class, calls queueTaskEnded: when it is done.
+    //  The following routine moves all views to their "home" positions, which were set in `viewDidLoad`.
+    //  To move a view around, change its center.  You should only change a view's frame if you are resizing the view.
+    //
+    //  Note the completion block, which can be used for housekeeping or to set up another animation.  This method, like all of the other animation methods for this class, calls queueTaskEnded: when it is done.
 
     func moveCardViewsToHomePositionsAnimated()
     {
-        UIView.animate(withDuration: 2.0,
-                       animations:
-                        {
-                            for card in self.cards
-                            {
-                                card.center = card.homeCenter
-                            }
-                        },
-                       completion:
-                       { (finished: Bool) in
-                            self.queuedTaskEnded(finished: finished)
-                       })
+        UIView.animate(withDuration: 2.0, animations:
+        {
+            for card in self.cards
+            {
+                card.center = card.homeCenter
+            }
+        },
+       completion:
+       { (finished: Bool) in
+        
+            self.queuedTaskEnded(finished: finished)
+       })
     }
 
-//  This routine sets the alpha of all of the card views to zero (except for the first card).
-//  There are three ways to make a view invisible:
-//      1)  Set its alpha to zero.  This is always animatable.
-//      2)  Set its hidden property to true.  This is never animatable.
-//      3)  Set its background color to [UIColor clearColor].  This may or may not be animatable depending on the type of view you're dealing with.  It usually will not hide your entire view - just the background.
-//  Note the completion block.  After animating the transition from an alpha of 1.0 to an alpha of 0.0, the views are moved behind the first card and their alpha is restored to 1.0.  Since the firstCard view is the last-added subview, it is drawn last and hides all of the views that are behind it.
+    /// This routine sets the alpha of all of the card views to zero (except for the first card).
+    ///
+    /// There are three ways to make a view invisible:
+    ///      1)  Set its alpha to zero.  This is always animatable.
+    ///      2)  Set its hidden property to true.  This is never animatable.
+    ///      3)  Set its background color to [UIColor clearColor].  This may or may not be animatable depending on the type of view you're dealing with.  It usually will not hide your entire view - just the background.
+    ///
+    /// Note the completion block.  After animating the transition from an alpha of 1.0 to an alpha of 0.0, the views are moved behind the first card and their alpha is restored to 1.0.  Since the firstCard view is the last-added subview, it is drawn last and hides all of the views that are behind it.
 
     func hideCardsAnimated()
     {
-        UIView.animate(withDuration: 1.0,
-                       animations:
-            {for card in self.cards
+        UIView.animate(withDuration: 1.0, animations:
+        {
+            for card in self.cards
             {
                 if card == self.firstCard
                 {
@@ -138,26 +146,28 @@ class CardViewController : UIViewController
                 {
                     card.alpha = 0.0
                 }
-                }
-        }, completion: {(finished: Bool) in
+            }
+        }, completion:
+            {(finished: Bool) in
+                
             for label in self.cards
             {
                 label.center = self.firstCard.homeCenter
                 label.alpha = 1.0
             }
-            
+        
             self.queuedTaskEnded(finished: finished)
         })
-        
     }
 
-//  This method is very similar to moveCardViewsToHomePositionsAnimated, except that instead of moving the cards all at once, it moves them one-by-one.
-//  Previous methods have used UIView's animationWithDuration:animation:completion:.  This method uses UIView's animationWithDuration:delay:options:animation:completion:, which allows us to specify a delay before the animation should be run.  By specifying a different delay for each card, we can move them one-by-one.
+    /// This method is very similar to moveCardViewsToHomePositionsAnimated, except that instead of moving the cards all at once, it moves them one-by-one.
+    ///
+    /// Previous methods have used UIView's animationWithDuration:animation:completion:.  This method uses UIView's animationWithDuration:delay:options:animation:completion:, which allows us to specify a delay before the animation should be run.  By specifying a different delay for each card, we can move them one-by-one.
 
 
     func moveCardsOneByOneAnimated()
     {
-        var cardCounter = 0
+        var cardCounter: TimeInterval = 0
         var completionCount = 0
         
         for card in self.cards.reversed()
@@ -165,9 +175,15 @@ class CardViewController : UIViewController
             card.alpha = 1
             
             UIView.animate(withDuration: 0.5,
-                           animations: {card.center = card.homeCenter},
+                           delay: cardCounter * 0.5,
+                           options: .curveEaseOut,
+                           animations:
+                            {
+                                card.center = card.homeCenter
+                            },
                            completion:
                             {(finished: Bool) in
+                                
                                 completionCount += 1
                             
                                 if (completionCount == self.cards.count)
@@ -178,82 +194,74 @@ class CardViewController : UIViewController
             
             cardCounter += 1
         }
-}
+    }
 
 
-//  The following method rotates the background colors of our cards from white to blue to pink and then back to white again.
-//  The background colors of UILabels are not animatable.  So this routine changes the card views' backgrounds to ClearColor, creates a backing view for each card, puts the backing view behind each card view, and animates the colors on the backing view.
-//  Note that this method nests calls to UIView animateWithDuration: in the completion block for previous animations.
+    //  The following method rotates the background colors of our cards from white to blue to pink and then back to white again.
+    //
+    //  The background colors of UILabels are not animatable.  So this routine changes the card views' backgrounds to ClearColor, creates a backing view for each card, puts the backing view behind each card view, and animates the colors on the backing view.  In the final completion block, the backing views are removed.
+    //
+    //  Note that this method nests calls to UIView animateWithDuration: in the completion block for previous animations.
 
-func changeCardColorsAnimated()
-    {
-        var cardCounter = 0
-        
-        for card in self.cards
+    func changeCardColorsAnimated()
         {
-            card.backgroundColor = UIColor.clear
+            var cardCounter = 0
             
-            let backingView = UIView(frame: card.frame)
-            backingView.backgroundColor = UIColor.clear
-            backingView.layer.cornerRadius = card.layer.cornerRadius;
-            
-            card.superview?.insertSubview(backingView, belowSubview: card)
-            
-            
-            UIView.animate(withDuration: 1.0,
-                           delay:0.4 * Double(cardCounter),
-                           options: .curveLinear,
-                           animations:
+            for card in self.cards
+            {
+                card.backgroundColor = UIColor.clear
+                
+                let backingView = UIView(frame: card.frame)
+                backingView.backgroundColor = UIColor.clear
+                backingView.layer.cornerRadius = card.layer.cornerRadius;
+                
+                card.superview?.insertSubview(backingView, belowSubview: card)
+                
+                
+                UIView.animate(withDuration: 1.0, delay:0.4 * Double(cardCounter), options: .curveLinear, animations:
+                {
+                    backingView.backgroundColor = self.blueColor
+                },
+               completion:
+                {(finished: Bool) in
+                    
+                    UIView.animate(withDuration: 1.0, animations:
+                    {
+                        backingView.backgroundColor = self.pinkColor
+                    },
+                   completion:
+                   { (finished: Bool) in     //  Start of first nested completion block
+                        
+                        UIView.animate(withDuration: 1.0, animations:
+                        {
+                            backingView.alpha = 0;
+                        },
+                        completion:
+                        {(finished: Bool) in
+                            
+                            backingView.removeFromSuperview()
+                            
+                            if (card == self.cards.last)
                             {
-                                backingView.backgroundColor = self.blueColor
-                            },
-                           completion:
-                            {(finished: Bool) in
-                                
-                                
-                                UIView.animate(withDuration: 1.0,
-                                               animations:
-                                                {
-                                                    backingView.backgroundColor = self.pinkColor
-                                                },
-                                               completion:
-                                                { (finished: Bool) in     //  Start of first nested completion block
-                                                    
-                                                    UIView.animate(withDuration: 1.0,
-                                                                   animations:
-                                                                    {
-                                                                        backingView.alpha = 0;
-                                                                    },
-                                                                    completion:
-                                                                    {(finished: Bool) in
-                                                                        
-                                                                        backingView.removeFromSuperview()
-                                                                        
-                                                                        if (card == self.cards.last)
-                                                                        {
-                                                                            self.queuedTaskEnded(finished: finished)
-                                                                        }
-                                                                    })
+                                self.queuedTaskEnded(finished: finished)
+                            }
+                        })
+                   })
+                })
+                
+                cardCounter += 1
+            }
+    }
 
-                                                                        
-                                                })
-                                                    
-                                                    
-                            })
-            
-            cardCounter += 1
-        }
-}
+    //MARK: - View Transition Animations
 
-//:MARK - View Transition Animations
-
-//  All of the previous animations methods have used variations on UIView's animateWithDuration: methods.  The next four animations use a different approach - they use UIView transitionWithView... methods.  The transitionWithView:... methods involve three views:
-//
-//      A)  A container view.  This view isn't animated per se, but it provides the context in which the animation should occur.  See the flip animations on the ProblemAnimations screen for an example of what can happen if the container view isn't set up appropriately.
-//      B)  A "from view" this is a current subview of the container view which is going to be removed as a subview of the container view.
-//      C)  A "to view" this is a view which is going to be added as subview of the container view in place of the "from view."
-//
-//  While the view transition animations appear very different to the user, the code used to produce them is almost exactly the same.  For this reason, a single demoViewTransition: submethod is used to perform all four different view transition animations.  The only difference between the four is the UIViewAnimationOptions passed to each view.
+    /// All of the previous animations methods have used variations on UIView's animateWithDuration: methods.  The next four animations use a different approach - they use UIView transitionWithView... methods.  The transitionWithView:... methods involve three views:
+    ///
+    ///      A)  A container view.  This view isn't animated per se, but it provides the context in which the animation should occur.  See the flip animations on the ProblemAnimations screen for an example of what can happen if the container view isn't set up appropriately.
+    ///      B)  A "from view" this is a current subview of the container view which is going to be removed as a subview of the container view.
+    ///      C)  A "to view" this is a view which is going to be added as subview of the container view in place of the "from view."
+    ///
+    /// While the view transition animations appear very different to the user, the code used to produce them is almost exactly the same.  For this reason, a single demoViewTransition: submethod is used to perform all four different view transition animations.  The only difference between the four is the UIViewAnimationOptions passed to each view.
 
     func demoViewTransition(options: UIViewAnimationOptions)
     {
@@ -264,28 +272,27 @@ func changeCardColorsAnimated()
             let fromView = self.transitionDemoFromViewForIndex(index: i)
             let toView = self.transitionDemoToViewForIndex(index: i)
             
-            UIView.transition(with: containerView,
-                              duration: 2.5,
-                              options: options,
-                              animations:
-                                {
-                                    fromView.removeFromSuperview()
-                                    containerView.addSubview(toView)
-                                },
-                              completion:
-                                {(finished: Bool) in
-                                    if (containerView == self.containerViews.last) {
-                                        
-                                        if (!finished)
-                                        {
-                                            self.tearDownAfterViewTransitionDemo()
-                                        }
-                                        
-                                        self.queuedTaskEnded(finished: finished)
-                                    }
-                                })
-            
+            UIView.transition(from: fromView, to: toView, duration: 2.5, options: options)
+            {(finished: Bool) in
+                
+                if !finished
+                {
+                    self.queuedTaskEnded(finished: finished)
+                }
+                
+                if (containerView == self.containerViews.last) {
+                    
+                    if (!finished)
+                    {
+                        self.tearDownAfterViewTransitionDemo()
+                    }
+                    else
+                    {
+                        self.queuedTaskEnded(finished: finished)
+                    }
+                }
             }
+        }
     }
 
     func transitionDemoFromViewForIndex(index: Int) -> UIView
@@ -328,7 +335,7 @@ func changeCardColorsAnimated()
     }
 
 
-// The following method sets up the appropriate container views and "flipside views" in order to do our view transitions.
+    /// The following method sets up the appropriate container views and "flipside views" in order to do our view transitions.
 
     func setupForViewTransitionDemo()
     {
@@ -344,10 +351,7 @@ func changeCardColorsAnimated()
             
             self.view.addSubview(containerView)
             
-            var tempRect = card.frame
-            tempRect.origin = CGPoint.zero
-            
-            card.frame = tempRect
+            card.frame = card.bounds
             
             containerView.addSubview(card)
             
@@ -361,17 +365,19 @@ func changeCardColorsAnimated()
             flipside.layer.cornerRadius = card.layer.cornerRadius
             flipside.layer.borderWidth = card.layer.borderWidth
             flipside.layer.borderColor = card.layer.borderColor
-            
+        
             self.flipsides.append(flipside)
         }
         
         self.queuedTaskEnded(finished: true)
     }
 
-// This method removes any leftover container views and flipside views from the view transition demos.
+    /// This method removes any leftover container views and flipside views from the view transition demos.
 
     func tearDownAfterViewTransitionDemo()
     {
+        print("Tearing down after view transitions")
+        
         for eachView in self.flipsides
         {
             if eachView.superview != nil
@@ -401,92 +407,111 @@ func changeCardColorsAnimated()
         self.queuedTaskEnded(finished: true)
 }
 
-//:MARK - Task Queue
+    //MARK: - Task Queue
 
-//  The methods in this section implement a simple task queue which is used to execute the desired animations in sequence, along with some other necessary maintenance tasks.
+    /// The methods in this section implement a simple task queue which is used to execute the desired animations in sequence, along with some other necessary maintenance tasks.
 
-    @IBAction func showAllAnimations(sender: Any)
+    @IBAction func showAllAnimations()
     {
-        self.addAnimation(nextAnimation: hideReplayButton)
+        self.addTask(task: hideReplayButton)
         
-        self.addAnimation(nextAnimation: hideCardsAnimated)
+        self.addTask(task: hideCardsAnimated)
         
-        self.addAnimation(nextAnimation: moveCardViewsToHomePositionsAnimated)
+        self.addTask(task: moveCardViewsToHomePositionsAnimated)
         
-        self.addAnimation(nextAnimation: hideCardsAnimated)
+        self.addTask(task: hideCardsAnimated)
         
-        self.addAnimation(nextAnimation: moveCardsOneByOneAnimated)
+        self.addTask(task: moveCardsOneByOneAnimated)
         
-        self.addAnimation(nextAnimation: changeCardColorsAnimated)
+        self.addTask(task: changeCardColorsAnimated)
         
-        self.addAnimation(nextAnimation: setupForViewTransitionDemo)
+        self.addTask(task: setupForViewTransitionDemo)
+        
+        self.addTask(task: demoViewTransitionFlipFromLeft)
+        
+        self.addTask(task: demoViewTransitionCurlUp)
     
-        self.addAnimation(nextAnimation: demoViewTransitionFlipFromLeft)
+        self.addTask(task: demoViewTransitionFlipFromBottom)
         
-        self.addAnimation(nextAnimation: demoViewTransitionCurlUp)
-    
-        self.addAnimation(nextAnimation: demoViewTransitionFlipFromBottom)
+        self.addTask(task: demoViewTransitionCrossDissolve)
         
-        self.addAnimation(nextAnimation: demoViewTransitionCrossDissolve)
+        self.addTask(task: tearDownAfterViewTransitionDemo)
         
-        self.addAnimation(nextAnimation: tearDownAfterViewTransitionDemo)
+        self.addTask(task: showReplayButtonAnimated)
         
-        self.addAnimation(nextAnimation: showReplayButton)
-        
-        self.runNextAnimation()
+        self.runNextTask()
     }
 
 
-    func runNextAnimation()
+    func runNextTask()
     {
-        if self.animations.isEmpty
+        if self.tasks.isEmpty
         {
-            NSLog("All done. The animation queue is empty");
+            NSLog("All done. The task array is empty");
         }
         else
         {
-            let firstAnimation = self.animations.remove(at: 0)
-            firstAnimation()
+            let nextAnimation = self.tasks.remove(at: 0)
+            
+            nextAnimation()
         }
     }
 
-    func addAnimation(nextAnimation: @escaping () -> ())
+    func addTask(task: @escaping () -> ())
     {
-        self.animations.append(nextAnimation)
+        self.tasks.append(task)
     }
 
-//  If a task didn't complete, empty the task queue so that we can start from scratch next time.  Animations might not complete if the app went into the background or if another screen became active.
-//  If the task did complete, start the next task (if any).
+    /// If a task didn't complete, empty the task queue so that we can start from scratch next time.  Animations might not complete if the app went into the background or if another screen became active.
+    ///
+    /// If the task did complete, start the next task (if any).
 
     func queuedTaskEnded(finished: Bool)
     {
         if !finished
         {
-            self.animations.removeAll()
+            NSLog("Task did not complete. Cleaning up")
             
-            NSLog("Animation did not complete.")
+            self.tasks.removeAll()
             
             self.showReplayButton()
         }
         else
         {
-            self.runNextAnimation()
+            self.runNextTask()
         }
     }
 
-//MARK: - Replay Button
+    //MARK: - Replay Button
+    
+    func showReplayButtonAnimated()
+    {
+        UIView.animate(withDuration: 0.25, animations:
+        {
+            self.showReplayButton()
+        },
+        completion:
+        {(finished: Bool) in
+            
+            self.queuedTaskEnded(finished: finished)
+        })
+    }
 
     func showReplayButton()
     {
-        UIView.animate(withDuration: 0.25,
-                       animations: {self.replayButton.alpha = 1},
-                       completion: {(finished: Bool) in self.queuedTaskEnded(finished: finished)})
+        self.replayButton.alpha = 1
     }
 
     func hideReplayButton()
     {
-        UIView.animate(withDuration: 0.5,
-                       animations: {self.replayButton.alpha = 0},
-                       completion: {(finished: Bool) in self.queuedTaskEnded(finished: finished)})
+        UIView.animate(withDuration: 0.5, animations:
+        {
+            self.replayButton.alpha = 0
+        },
+        completion:
+        {(finished: Bool) in
+            
+            self.queuedTaskEnded(finished: finished)
+        })
     }
 }

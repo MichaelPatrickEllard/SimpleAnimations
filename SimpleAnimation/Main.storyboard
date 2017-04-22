@@ -36,7 +36,7 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="showAllAnimationsWithSender:" destination="NPo-LR-fMM" eventType="touchUpInside" id="95o-C4-9Y0"/>
+                                    <action selector="showAllAnimations" destination="NPo-LR-fMM" eventType="touchUpInside" id="L2h-7s-64X"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="e" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="AqZ-sb-W5G" customClass="CardView" customModule="SimpleAnimation">
