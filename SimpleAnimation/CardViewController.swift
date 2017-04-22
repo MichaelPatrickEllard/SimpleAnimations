@@ -9,20 +9,23 @@
 //  This work is licensed under the Creative Commons Attribution 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 
-/*  This screen demonstrates eight animations in sequence.  The first four animations are animations of UIView properties.  The next four animations are view transition animations, which animate the act of replacing an existing subview with a new one.  The animations shown are:
- 
- 1)  Hiding cards by setting their alpha to zero
- 2)  Moving cards in an animated way, with all animations beginning and ending at the same time
- 3)  Moving cards in an animated way, with each animation beginning and ending at a different time
- 4)  Animating changes in the background color of a view
- 5)  Doing a "flip from left" view transition from one view to another
- 6)  Doing a "curl up" view transition from one view to another
- 7)  Doing a "flip from bottom" view transition from one view to another
- 8)  Doing a "cross disolve" view transition from one view to another
- 
- Each animation is done using a separate method. In a few cases, sub-methods are used in order to keep the code clear and concise.
- 
- The animation methods are managed using a very simple task queue created as part of this class.  */
+//  This screen demonstrates eight animations in sequence.  The first four animations are animations of UIView properties. The next four animations are view transition animations, which animate the act of replacing an existing subview with a new one.  The animations shown are:
+// 
+//  1)  Hiding cards by setting their alpha to zero
+//  2)  Moving cards in an animated way, with all animations beginning and ending at the same time
+//  3)  Moving cards in an animated way, with each animation beginning and ending at a different time
+//  4)  Animating changes in the background color of a view
+//  5)  Doing a "flip from left" view transition from one view to another
+//  6)  Doing a "curl up" view transition from one view to another
+//  7)  Doing a "flip from bottom" view transition from one view to another
+//  8)  Doing a "cross disolve" view transition from one view to another
+// 
+//  Each animation is done using a separate method. From time to time, helper methods are used in order to keep the code clear and concise.
+// 
+// The animation methods are managed using a very simple arry of tasks managed as part of this class.
+//
+//  To keep the code simple and easy-to-read, I have used named methods instead of closures with capture lists.  This does mean that there can be strong reference cycles created while animations are running, but this should not cause any long-term problems.
+
 
 import UIKit
 

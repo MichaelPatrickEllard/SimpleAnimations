@@ -21,8 +21,9 @@ This work is licensed under the Creative Commons Attribution 3.0 Unported Licens
 -----
 
 
-Version 2.0 Updates (Work-in-Progress, April 2017)
+Version 2.0 Updates (April 22, 2017)
 
+-   Upgraded commenting
 -   Removed "Wrong-way Rotate" example, since the animation problem it demonstrated was removed in iOS 8 
 -   Changed the deployment target to iOS 8.0
 -   Project upgraded to use a single storyboard instead of multiple xib files
