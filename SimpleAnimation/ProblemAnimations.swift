@@ -36,7 +36,6 @@ class ProblemAnimations: UIViewController
    
     @IBOutlet var correctStar: UIImageView!
     @IBOutlet var immobileStar: UIImageView!
-    @IBOutlet var wrongWayStar: UIImageView!
     @IBOutlet var jerkyStar: UIImageView!
     var correctRotateCounter = 0
     var jerkyRotateCounter = 0
