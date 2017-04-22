@@ -369,7 +369,10 @@ class CardViewController : UIViewController
             self.flipsides.append(flipside)
         }
         
-        self.queuedTaskEnded(finished: true)
+        DispatchQueue.main.async
+        {
+            self.queuedTaskEnded(finished: true)
+        }
     }
 
     /// This method removes any leftover container views and flipside views from the view transition demos.
