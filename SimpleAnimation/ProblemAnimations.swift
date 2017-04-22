@@ -256,20 +256,6 @@ class ProblemAnimations: UIViewController
         }
     }
     
-    /// This animation works in current versions of iOS, but it has problems under iOS 7 and earlier.  In this case, we're doing series of rations that take the star exactly 180° - 1/2 way around the circle.  UIView looks at the beginning state and end state, and optimizes how to get from the beginning state to the end state.
-    ///
-    /// Under iOS 7.1 and earlier, In doing the initial rotate, it goes counter-clockwise.  However, if you rotate it again, it will go clockwise the next time.
-    ///
-    /// Under iOS 8.1, In doing the initial rotate, it goes clockwise for both rotations.
-        
-    @IBAction func wrongWayRotatePressed()
-    {
-        UIView.animate(withDuration: 1.0)
-        {
-            self.spinStar(star:self.wrongWayStar, rotations:0.5)
-        }
-    }
-        
     /// This method does a series of eight 1/4 turn rotations.  This works, but the animation is jerky. The animation is jerky because the default for the animation curve is "ease in / ease out", meaning that the animations will go slowly at the beginning and end of the animation, then more quickly in the middle.  In an animation that is really a series of animations chained together, this causes jerky updating. The solution is to use animateWithDuration:delay:options:animations:completion: so that you can specify to use UIViewAnimationOptionCurveLinear. If you don't specify this, the default is UIViewAnimationCurveEaseInOut)
     ///
     /// This is a recursive method that will call itself until all of the rotations are completed.  It checks the `finished` value passed to the completion block to make sure that the previous animation completed.  If the previous animation did not complete, then no new animations are attempted and the star position and animation counter are reset so that the view controller is ready to start again if the method is called a second time.
@@ -305,5 +291,5 @@ class ProblemAnimations: UIViewController
                                 }
                             }
                         })
-        }
+    }
 }
