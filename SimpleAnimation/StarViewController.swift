@@ -161,6 +161,8 @@ class StarViewController : UIViewController, CAAnimationDelegate
 
     @IBAction func spinStarAnimated()
     {
+        self.spinCounter += 1
+        
         UIView.animate(withDuration: 1.0,
                        delay: 0,
                        options: .curveLinear,
