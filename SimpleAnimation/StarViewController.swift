@@ -159,7 +159,7 @@ class StarViewController : UIViewController, CAAnimationDelegate
     ///
     /// This method also checks the `finished` parameter passed to the completion block. If the animation finishes,
 
-    @IBAction func spinStarAnimated()
+    func spinStarAnimated()
     {
         self.spinCounter += 1
         
@@ -189,6 +189,16 @@ class StarViewController : UIViewController, CAAnimationDelegate
                                 self.spinStarAnimated()
                             }
                         })
+    }
+    
+    /// This method is called when the spin button is pressed.  If the `spinCounter` property is greater than zero, that means that the start is already spinning, so the button press is ignored.  If `spinCounter` is zero, then the star is not spinning and spinStarAnimated is called.
+    
+    @IBAction func spinStarPressed()
+    {
+        if self.spinCounter == 0
+        {
+            spinStarAnimated()
+        }
     }
 
 

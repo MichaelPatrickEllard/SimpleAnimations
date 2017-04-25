@@ -20,6 +20,10 @@ This work is licensed under the Creative Commons Attribution 3.0 Unported Licens
 
 -----
 
+Version 2.1 Updates (Work-in-Progress)
+
+-   The spin button on the StarViewController screen was upgraded so that if the spin button is pressed when the star is already spinning, the button press is ignored.  
+-   Fixed a bug that caused the star on the StarViewController screen to spin indefinitely
 
 Version 2.0 Updates (April 22, 2017)
 
