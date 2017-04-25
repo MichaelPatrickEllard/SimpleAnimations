@@ -27,6 +27,7 @@ Possible Future Improvements
 -   Currently all views on all screens opt-in to AutoLayout.  It is worth testing if this affects the performance when moving views via code.  
 -   Currently the screens are set up to run on an iPad in landscape mode.  The project could be upgraded to run on an iPad running in portrait mode or on an iPhone.
 -   I plan to add a screen to demonstrate the use of CADisplayLink
+-   The layer shadow animation used to make the star twinkle is extremely expensive. It makes the animation drop a lot of frames when used in conjunction with other animations. A less expensive animation using a speparate "glow" image which is faded in and out could probably achieve the same effect much more efficiently.  It would be good to create a screen to demonstrate this alternate approach.  
 
 Version 2.1 Updates (Work-in-Progress)
 
