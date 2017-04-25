@@ -46,36 +46,42 @@ class ProblemAnimations: UIViewController
     
     @IBAction func fadeTapped()
     {
-        UIView.animate(withDuration: 1.0,
-                       animations:
-                        {
-                            self.fadeStar.alpha = 0
-                        },
-                       completion:
-                        {(finished: Bool) in
-                            self.fadeStar.alpha = 1
-                        })
+        UIView.animate(withDuration: 1.0, animations:
+        {
+            self.fadeStar.alpha = 0
+        },
+        completion:
+        {(finished: Bool) in
+            
+            UIView.animate(withDuration: 1.0)
+            {
+                self.fadeStar.alpha = 1
+            }
+        })
     }
 
 
-    /// This animation doesn't work. The star doesn't fade out or even become hidden.  On older devices / versions of iOS it may flicker for a second.
+    /// This animation doesn't work. The star doesn't fade out or even become hidden.  On some devices / versions of iOS it may flicker for a second.
     ///
-    /// The code is exactly the same as the working fadeTapped function, except that it adjusted the `isHidden` property instead of the alpha property.  `isHidden` is not an animatable property, so there is nothing animatable in this code.  Thus, UIView applies the `isHidden` property immediately.  UIView doesn't take a full second to do the initial animation, since there's nothing to animate for the requested duration.  Thus, it goes directly to the completion block, where there's also nothing to animate.  The result is that the star might flicker out (i.e. become hidden) for a fraction of a second, and then flicker back immediately. On modern hardward / versions of iOS, you usually cannot even see this happen.
+    /// The code is exactly the same as the working fadeTapped function, except that it adjusted the `isHidden` property instead of the alpha property.  `isHidden` is not an animatable property, so there is nothing animatable in this code.  Thus, UIView applies the `isHidden` property immediately.  UIView doesn't take a full second to do the initial animation, since there's nothing to animate for the requested duration.  Thus, it goes directly to the completion block, where there's also nothing to animate.  The result is that the star might flicker out (i.e. become hidden) for a fraction of a second, and then flicker back immediately. On modern hardware / versions of iOS, you usually cannot even see this happen.
     ///
-    /// The lesson to take away here is that not every UIView or CALayer property is animatable.  The documentation is usually pretty clear about which properties are animatable and which aren't. If you're not sure, check the documentation or do a quick using some test code.
+    /// The lesson to take away here is that not every UIView or CALayer property is animatable.  The documentation is usually pretty clear about which properties are animatable and which aren't. If you're not sure, check the documentation or do a quick test using some code.
 
 
     @IBAction func doNotFadeTapped()
     {
-        UIView.animate(withDuration: 1.0,
-                       animations:
-                        {
-                            self.nonFadingStar.isHidden = true
-                        },
-                       completion:
-                        {(finished: Bool) in
-                            self.nonFadingStar.isHidden = false
-                        })
+        UIView.animate(withDuration: 1.0, animations:
+        {
+            self.nonFadingStar.isHidden = true
+        },
+        completion:
+        {(finished: Bool) in
+            
+            UIView.animate(withDuration: 1.0)
+            {
+                self.nonFadingStar.isHidden = false
+            }
+        })
     }
     
             
@@ -88,17 +94,20 @@ class ProblemAnimations: UIViewController
         
     @IBAction func blinkTapped()
     {
-        UIView.animate(withDuration: 1.0,
-                       animations:
-                        {
-                            self.blinkStar.isHidden = true
-                            self.blinkHelperView.backgroundColor = UIColor.darkGray
-                        },
-                       completion:
-                        {(finished: Bool) in
-                            self.blinkStar.isHidden = false
-                            self.blinkHelperView.backgroundColor = UIColor.black
-                        })
+        UIView.animate(withDuration: 1.0, animations:
+        {
+            self.blinkStar.isHidden = true
+            self.blinkHelperView.backgroundColor = UIColor.darkGray
+        },
+        completion:
+        {(finished: Bool) in
+            
+            UIView.animate(withDuration: 1.0)
+            {
+                self.blinkStar.isHidden = false
+                self.blinkHelperView.backgroundColor = UIColor.black
+            }
+        })
     }
     
     //MARK: - Color Transitions
