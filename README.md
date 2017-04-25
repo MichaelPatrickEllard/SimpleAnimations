@@ -20,6 +20,14 @@ This work is licensed under the Creative Commons Attribution 3.0 Unported Licens
 
 -----
 
+Possible Future Improvements
+
+-   The star graphic which is used on many screens has a problem where the visible center of the star is not the actual center of the graphic.  This means that when the star spins, it appears a bit wibbly-wobbly as the visible center moves around the actual center of the graphic.  The transparent area around the visible graphic should be adjusted so that the visible center and the actual center are the same.
+-   The same star png is used on all screens.  It is larger than it needs to be and is currently being scaled for presentation on the screens.  The project might be more efficient if graphics scaled appropriately for the screens were used.  This would involve separate graphics for the StarViewController screen and the ProblemAnimations screen.  
+-   Currently all views on all screens opt-in to AutoLayout.  It is worth testing if this affects the performance when moving views via code.  
+-   Currently the screens are set up to run on an iPad in landscape mode.  The project could be upgraded to run on an iPad running in portrait mode or on an iPhone.
+-   I plan to add a screen to demonstrate the use of CADisplayLink
+
 Version 2.1 Updates (Work-in-Progress)
 
 -   The spin button on the StarViewController screen was upgraded so that if the spin button is pressed when the star is already spinning, the button press is ignored.  
